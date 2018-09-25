@@ -12,9 +12,10 @@ global $connect;
 }
 function DisplayAllProducts(){
 	global $connect;
-	$sth = $connect->prepare("SELECT * From products");
-	$sth->execute();
-	$results = $sth->fetch(PDO::FETCH_OBJ);
+	$query = $connect->prepare("SELECT * FROM products order by pro_id"); 
+	$query->execute();
+	$result = $query->fetchAll(PDO::FETCH_OBJ);
+	return $result;
 }
 }
 

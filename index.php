@@ -70,7 +70,7 @@ global $connect;
 
 					<!-- Search -->
 					<div class="header-search">
-						<form>
+						<form action="search.php" method="POST">
 							<input class="input search-input" type="text" placeholder="Enter your keyword">
 							<select class="input search-categories">
 								<option value="0">All Categories</option>
@@ -386,9 +386,12 @@ global $connect;
 									</div>
 									<h2 class='product-name'><a href='#'>".$poultry->pro_name."</a></h2>
 									<div class='product-btns'>
+
 										<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
 										<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
-										<button class='primary-btn add-to-cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button>
+										<form method='post' action='cart.php'>
+										<input type='hidden' name='proid' value='".$poultry->pro_id."'></>
+										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 									</div>
 								</div>
 							</div>";
