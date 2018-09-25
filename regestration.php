@@ -15,7 +15,6 @@ if (isset($_POST['submit'])) {
 	$address = $_POST['address'];
 
 	$query = $connect->prepare("INSERT INTO `users` (`id`, `username`, `password`, `Fname`, `Lname`, `Gender`, `Bday`, `Address`) VALUES (NULL, '$username', '$password', '$firstname', '$lastname', '$gender', '$birthday', '$address')");
-	echo "success";
 	if ($query->execute()) {
 		echo "success";
 	}

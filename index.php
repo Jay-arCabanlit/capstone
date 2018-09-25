@@ -93,6 +93,7 @@ global $connect;
 								<strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
 							</div>
 							<a href="#" class="text-uppercase" data-toggle="modal" data-target="#login-modal">Login</a> 
+							/ <a href="regestration_form.php" class="text-uppercase">Join</a>
 							<form method="post" action="login.php">
 							<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     	  <div class="modal-dialog">
@@ -114,7 +115,7 @@ global $connect;
 
 
 
-							/ <a href="regestration_form.php" class="text-uppercase">Join</a>
+							
 							<ul class="custom-menu">
 								<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
 								<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>

@@ -1,5 +1,5 @@
 <?php 
-include "/connect/connection.php";
+include "connect/connection.php";
 class viewallproducts{
 
 	function poultry(){

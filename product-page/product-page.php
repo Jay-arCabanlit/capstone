@@ -5,8 +5,6 @@ include "../function/class_productdetails.php";
 $details = new ViewProductDetails;
 $viewDetails = $details->AllProductDetails($_GET['prodetails']);
 global $connect;
-echo $viewDetails->pro_price;
-echo $viewDetails->pro_name;
 ?>
 <!DOCTYPE html>
 <html lang="en">

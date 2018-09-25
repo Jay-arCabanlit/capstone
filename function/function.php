@@ -1,5 +1,5 @@
 <?php 
-include "/connect/connection.php";
+include "connect/connection.php";
 class users {
 	//login
 	function getdata($user, $password){
