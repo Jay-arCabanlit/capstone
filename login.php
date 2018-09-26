@@ -26,7 +26,7 @@ if (isset($_POST['login'])) {
 			$stmt2->execute();
 			$account2 = $stmt2->fetch(PDO::FETCH_OBJ);
 			// $username = $_SESSION['login'];
-			echo "hello";
+			echo "<script>window.open('index.php','_self');alert('succesfuly login')</script>";
 		}
 		# code...
 	}

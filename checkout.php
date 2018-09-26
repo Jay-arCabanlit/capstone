@@ -1,12 +1,14 @@
-<?php
+<?php 
 session_start();
-include "../connect/connection.php";
-include "../function/class_productdetails.php";
-$details = new ViewProductDetails;
-$AllProducts = $details->DisplayAllProducts();
-?>
+include "connect/connection.php";
+include "class_ip.php";
 
-<!DOCTYPE html>	
+$IpDetails = new GetIp;
+$ipAdd = $IpDetails->GetIpAdd();
+
+ ?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,22 +23,20 @@ $AllProducts = $details->DisplayAllProducts();
 	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 
 	<!-- Slick -->
-	<link type="text/css" rel="stylesheet" href="../css/slick.css" />
-	<link type="text/css" rel="stylesheet" href="../css/slick-theme.css" />
+	<link type="text/css" rel="stylesheet" href="css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
 
 	<!-- nouislider -->
-	<link type="text/css" rel="stylesheet" href="../css/nouislider.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="../css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="../css/style.css" />
-
-	<link rel="stylesheet" type="text/css" href="../assets/css/moded.css">
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,8 +51,6 @@ $AllProducts = $details->DisplayAllProducts();
 	<!-- HEADER -->
 	<header>
 		<!-- top Header -->
-		<div id="top-header">
-		</div>
 		<!-- /top Header -->
 
 		<!-- header -->
@@ -62,7 +60,7 @@ $AllProducts = $details->DisplayAllProducts();
 					<!-- Logo -->
 					<div class="header-logo">
 						<a class="logo" href="#">
-							<img src="../img/logo1.png" alt="">
+							<img src="./img/logo1.png" alt="">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -171,32 +169,14 @@ $AllProducts = $details->DisplayAllProducts();
 					<span class="category-header">Categories <i class="fa fa-list"></i></span>
 					<ul class="category-list">
 						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Organic</a>
-							<div class="custom-menu">
-								<div class="row hidden-sm hidden-xs">
-									<div class="col-md-12">
-										<hr>
-										<a class="banner banner-1" href="#">
-											<img src="./img/banner05.jpg" alt="">
-											<div class="banner-caption text-center">
-												<h2 class="white-color">NEW COLLECTION</h2>
-												<h3 class="white-color font-weak">HOT DEAL</h3>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
+							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ORGANIC</a>
 						</li>
-						<li><a href="#">Vegetable</a></li>
-						<li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Fruits</a>
-							<div class="custom-menu">
-							</div>
+						<li><a href="#">VEGETABLE</a></li>
+						<li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">FRUITS <i class="fa fa-angle-right"></i></a>
 						</li>
 						<li><a href="#">Livestock</a></li>
 						<li><a href="#">Poultry</a></li>
-						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Rice</a>
-						</li>
+						<li><a href="#">rice</a></li>
 						<li><a href="#">View All</a></li>
 					</ul>
 				</div>
@@ -231,7 +211,7 @@ $AllProducts = $details->DisplayAllProducts();
 		<div class="container">
 			<ul class="breadcrumb">
 				<li><a href="#">Home</a></li>
-				<li class="active">Products</li>
+				<li class="active">Checkout</li>
 			</ul>
 		</div>
 	</div>
@@ -243,150 +223,195 @@ $AllProducts = $details->DisplayAllProducts();
 		<div class="container">
 			<!-- row -->
 			<div class="row">
-				<!-- ASIDE -->
-					<!-- /aside widget -->
-
-					<!-- aside widget -->
-					<!-- /aside widget -->
-
-					<!-- aside widget -->
-					<div class="aside">
-						<h3 class="aside-title">Top Rated Product</h3>
-						<!-- widget product -->
-						<div class="product product-widget">
-							<div class="product-thumb">
-								<img src="./img/thumb-product01.jpg" alt="">
+				<form id="checkout-form" class="clearfix">
+					<div class="col-md-6">
+						<div class="billing-details">
+							<p>Already a customer ? <a href="#">Login</a></p>
+							<div class="section-title">
+								<h3 class="title">Billing Details</h3>
 							</div>
-						</div>
-						<!-- /widget product -->
-					<!-- /aside widget -->
-				</div>
-				<!-- /ASIDE -->
-
-				<!-- MAIN -->
-				<div id="main" class="col-md-9">
-					<!-- store top filter -->
-					<div class="store-filter clearfix">
-						<div class="pull-left">
-							<div class="row-filter">
-								<a href="#"><i class="fa fa-th-large"></i></a>
-								<a href="#" class="active"><i class="fa fa-bars"></i></a>
+							<div class="form-group">
+								<input class="input" type="text" name="first-name" placeholder="First Name">
 							</div>
-							<div class="sort-filter">
-								<span class="text-uppercase">Sort By:</span>
-								<select class="input">
-										<option value="0">Position</option>
-										<option value="0">Price</option>
-										<option value="0">Rating</option>
-									</select>
-								<a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
+							<div class="form-group">
+								<input class="input" type="text" name="last-name" placeholder="Last Name">
 							</div>
-						</div>
-						<div class="pull-right">
-							<div class="page-filter">
-								<span class="text-uppercase">Show:</span>
-								<select class="input">
-										<option value="0">10</option>
-										<option value="1">20</option>
-										<option value="2">30</option>
-									</select>
+							<div class="form-group">
+								<input class="input" type="email" name="email" placeholder="Email">
 							</div>
-							<ul class="store-pages">
-								<li><span class="text-uppercase">Page:</span></li>
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- /store top filter -->
-
-					<!-- STORE -->
-					<div id="store">
-						<!-- row -->
-						<div class="row">
-							<!-- Product Single -->
-							<?php 
-								foreach ($AllProducts as $result ) { $allProduct = "
-								<div class='product product-single img-space'>
-									<div class='product-thumb'>
-										<div class='product-label'>
-											<span>New</span>
-											<span class='sale'>-20%</span>
-										</div>
-										<a href='product-page.php?prodetails=".$result->pro_id."'>
-										<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
-										<img src='../img/".$result->pro_img1."' alt='' class='img-size'>
-									</div>
-									<div class='product-body'>
-										<h3 class='product-price'>".$result->pro_price."<del class='product-old-price'>$45.00</del></h3>
-										<div class='product-rating'>
-											<i class='fa fa-star'></i>
-											<i class='fa fa-star'></i>
-											<i class='fa fa-star'></i>
-											<i class='fa fa-star'></i>
-											<i class='fa fa-star-o empty'></i>
-										</div>
-										<h2 class='product-name'><a href='#'>".$result->pro_name."</a></h2>
-										<div class='product-btns'>
-											<form method='post' action='../cart.php' class='form_align'>
-										<input type='hidden' name='proid' value='".$result->pro_id."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
-										</div>
+							<div class="form-group">
+								<input class="input" type="text" name="address" placeholder="Address">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="city" placeholder="City">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="country" placeholder="Country">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+							</div>
+							<div class="form-group">
+								<input class="input" type="tel" name="tel" placeholder="Telephone">
+							</div>
+							<div class="form-group">
+								<div class="input-checkbox">
+									<input type="checkbox" id="register">
+									<label class="font-weak" for="register">Create Account?</label>
+									<div class="caption">
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+											<p>
+												<input class="input" type="password" name="password" placeholder="Enter Your Password">
 									</div>
 								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="shiping-methods">
+							<div class="section-title">
+								<h4 class="title">Shiping Methods</h4>
+							</div>
+<!-- 							<div class="input-checkbox">
+								<input type="radio" name="shipping" id="shipping-1" checked>
+								<label for="shipping-1">Free Shiping -  $0.00</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div>
+							</div> -->
+<!-- 							<div class="input-checkbox">
+								<input type="radio" name="shipping" id="shipping-2">
+								<label for="shipping-2">Standard - $4.00</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div> -->
+							</div>
+						</div>
+
+<!-- 						<div class="payments-methods">
+							<div class="section-title">
+								<h4 class="title">Payments Methods</h4>
+							</div>
+							<div class="input-checkbox">
+								<input type="radio" name="payments" id="payments-1" checked>
+								<label for="payments-1">Direct Bank Transfer</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div>
+							</div>
+							<div class="input-checkbox">
+								<input type="radio" name="payments" id="payments-2">
+								<label for="payments-2">Cheque Payment</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div>
+							</div>
+							<div class="input-checkbox">
+								<input type="radio" name="payments" id="payments-3">
+								<label for="payments-3">Paypal System</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div>
+							</div>
+						</div> -->
+					</div>
+
+					<div class="col-md-12">
+						<div class="order-summary clearfix">
+							<div class="section-title">
+								<h3 class="title">Order Review</h3>
+							</div>
+								<table class="shopping-cart-table table">
+								<thead>
+									<tr>
+										<th>Product</th>
+										<th class='text-center'>Price</th>
+										<th class='text-center'>Quantity</th>
+										<th class='text-center'>Sub Total</th>
+										<th class='text-right'>Delete to Cart</th>
+									</tr>
+								</thead>
+							<?php 
+
+							global $connect;
+
+							$ip = $ipAdd;
+							$get_cart_item = $connect->prepare("SELECT * FROM cart where ip_add = '$ip'");
+							$get_cart_item->fetchAll(PDO::FETCH_OBJ);
+							$get_cart_item->execute();
+							$cart_empty = $get_cart_item->rowCount();
+							$net_total = 0;
+
+
+							while ($row = $get_cart_item->fetch()){
+
+								$pro_id = $row['pro_id'];
+
+								$get_pro = $connect->prepare("SELECT * FROM products where pro_id = '$pro_id'");
+								$get_pro->fetchAll(PDO::FETCH_OBJ);
+								$get_pro->execute();
+								$row_pro = $get_pro->fetch();
+
+								echo "
+								<tbody>
+									<tr>
+										<td class='thumb'><img src='img/".$row_pro['pro_img1']."' alt='></td>
+										<td class='details'>
+											<a href='#'>".$row_pro['pro_name']."</a>
+										</td>
+										<td class='price text-center'><strong>".$row_pro['pro_price']."</td>
+										<td class='qty text-center'> 
+										<form method='POSt' action='update_cart.php'>
+										<input class='input' type='text' value='".$row['qty']."' name='qty[".$row['cart_id']."]'/>
+										<input type='submit' class='primary-btn' name='up_qty' />
+										</form>
+										</td>
+										<td class='total text-center'><strong class='primary-color'>";
+										$Quantity = $row['qty'];
+										$pro_price = $row_pro['pro_price'];
+										$subtotal = $Quantity*$pro_price;
+
+										echo($subtotal);
+										$net_total = $net_total+$subtotal;
+										echo"</strong></td>
+										<td class='text-right'><a class='main-btn icon-btn' href='delete_cart.php?delete_id=".$row_pro['pro_id']."'><i class='fa fa-close'></i></a></td>
+									</tr>
+
+								</tbody>
 							";
-							echo $allProduct;
-									# code...
-								}
+
+								}; 
+
+								echo "
+								<tfoot>
+									<tr>
+										<th class='empty' colspan='3'></th>
+										<th>SHIPING</th>
+										<td colspan='2'>Free Shipping</td>
+									</tr>
+									<tr>
+										<th class='empty' colspan='3'></th>
+										<th>TOTAL</th>
+										<th colspan='2' class='total'>$net_total</th>
+									</tr>
+								</tfoot>";
+
+
 							 ?>
-							<!-- /Product Single -->
 
-						
-						</div>
-						<!-- /row -->
-					</div>
-					<!-- /STORE -->
 
-					<!-- store bottom filter -->
-					<div class="store-filter clearfix">
-						<div class="pull-left">
-							<div class="row-filter">
-								<a href="#"><i class="fa fa-th-large"></i></a>
-								<a href="#" class="active"><i class="fa fa-bars"></i></a>
-							</div>
-							<div class="sort-filter">
-								<span class="text-uppercase">Sort By:</span>
-								<select class="input">
-										<option value="0">Position</option>
-										<option value="0">Price</option>
-										<option value="0">Rating</option>
-									</select>
-								<a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
-							</div>
+							 </table>
+
 						</div>
-						<div class="pull-right">
-							<div class="page-filter">
-								<span class="text-uppercase">Show:</span>
-								<select class="input">
-										<option value="0">10</option>
-										<option value="1">20</option>
-										<option value="2">30</option>
-									</select>
-							</div>
-							<ul class="store-pages">
-								<li><span class="text-uppercase">Page:</span></li>
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-							</ul>
-						</div>
+
 					</div>
-					<!-- /store bottom filter -->
-				</div>
-				<!-- /MAIN -->
+				</form>
 			</div>
 			<!-- /row -->
 		</div>
@@ -406,7 +431,7 @@ $AllProducts = $details->DisplayAllProducts();
 						<!-- footer logo -->
 						<div class="footer-logo">
 							<a class="logo" href="#">
-		            <img src="./img/logo.png" alt="">
+		            <img src="./img/logo1.png" alt="">
 		          </a>
 						</div>
 						<!-- /footer logo -->
@@ -434,7 +459,7 @@ $AllProducts = $details->DisplayAllProducts();
 							<li><a href="#">My Account</a></li>
 							<li><a href="#">My Wishlist</a></li>
 							<li><a href="#">Compare</a></li>
-							<li><a href="checkout.php">Checkout</a></li>
+							<li><a href="#">Checkout</a></li>
 							<li><a href="#">Login</a></li>
 						</ul>
 					</div>
@@ -493,12 +518,12 @@ $AllProducts = $details->DisplayAllProducts();
 	<!-- /FOOTER -->
 
 	<!-- jQuery Plugins -->
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/slick.min.js"></script>
-	<script src="../js/nouislider.min.js"></script>
-	<script src="../js/jquery.zoom.min.js"></script>
-	<script src="../js/main.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/jquery.zoom.min.js"></script>
+	<script src="js/main.js"></script>
 
 </body>
 
