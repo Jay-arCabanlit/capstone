@@ -312,8 +312,6 @@ $AllProducts = $details->DisplayAllProducts();
 								<div class='product product-single img-space'>
 									<div class='product-thumb'>
 										<div class='product-label'>
-											<span>New</span>
-											<span class='sale'>-20%</span>
 										</div>
 										<a href='product-page.php?prodetails=".$result->pro_id."'>
 										<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>

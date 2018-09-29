@@ -43,7 +43,7 @@ if (isset($_POST['add_product'])) {
 		$ProImgTree_tmp = $_FILES['proimgtree'] ['tmp_name'];
 	$ProImgFour = $_FILES['proimgfour'] ['name'];
 		$ProImgFour_tmp = $_FILES['proimgfour'] ['tmp_name'];
-	$ProFeatureOne = $_POST['profeatureone'];
+	$ProFeatureOne = $_POST['AvailaBility'];
 	$ProFeatureTwo = $_POST['profeaturetwo'];
 	$ProFeatureTree = $_POST['profeaturetree'];
 	$ProFeatureFour = $_POST['profeaturefour'];
@@ -57,7 +57,8 @@ if (isset($_POST['add_product'])) {
 	move_uploaded_file($ProImgTree_tmp,"../img/$ProImgTree");
 	move_uploaded_file($ProImgFour_tmp,"../img/$ProImgFour");
 
-	$add_product = $connect->prepare("insert into products(pro_name,cat_id,sub_cat_id,pro_img1,pro_img2,pro_img3,pro_img4,pro_feature1,pro_feature2,pro_feature3,pro_feature4,pro_feature5,pro_price,pro_model,pro_keyword,pro_added_date) values ('$ProName','$CatId','$SubCat','$ProImgOne','$ProImgTwo','$ProImgTree','$ProImgFour','$ProFeatureOne','$ProFeatureTwo','$ProFeatureTree','$ProFeatureFour','$ProFeatureFive','$ProPrice','$ProModel','$ProKeyword',NOW())");
+	$add_product = $connect->prepare("insert into products(pro_name,cat_id,sub_cat_id,pro_img1,pro_img2,pro_img3,pro_img4,availability,pro_feature2,pro_feature3,pro_feature4,pro_feature5,pro_price,pro_model,pro_keyword,pro_added_date) values ('$ProName','$CatId','$SubCat','$ProImgOne','$ProImgTwo','$ProImgTree','$ProImgFour','$ProFeatureOne','$ProFeatureTwo','$ProFeatureTree','$ProFeatureFour','$ProFeatureFive','$ProPrice','$ProModel','$ProKeyword',NOW())");
+
 	if ($add_product->execute()) {
 		echo "finish";
 		# code...

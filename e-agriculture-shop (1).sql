@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 24, 2018 at 04:54 AM
+-- Generation Time: Sep 29, 2018 at 03:12 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -56,15 +56,20 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `qty` int(10) NOT NULL,
   `ip_add` text NOT NULL,
   PRIMARY KEY (`cart_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`cart_id`, `pro_id`, `qty`, `ip_add`) VALUES
-(1, '', 1, '::1'),
-(2, '9', 1, '::1');
+(19, '19', 1, '::1'),
+(9, '9', 3, '::1'),
+(13, '13', 3, '::1'),
+(16, '11', 1, '::1'),
+(15, '23', 2, '::1'),
+(17, '10', 1, '::1'),
+(20, '', 1, '::1');
 
 -- --------------------------------------------------------
 
@@ -107,40 +112,45 @@ CREATE TABLE IF NOT EXISTS `products` (
   `pro_img2` varchar(100) NOT NULL,
   `pro_img3` varchar(100) NOT NULL,
   `pro_img4` varchar(100) NOT NULL,
-  `pro_feature1` varchar(100) NOT NULL,
+  `availability` varchar(100) NOT NULL,
   `pro_feature2` varchar(100) NOT NULL,
   `pro_feature3` varchar(100) NOT NULL,
   `pro_feature4` varchar(100) NOT NULL,
-  `pro_feature5` varchar(100) NOT NULL,
+  `pro_feature5` text NOT NULL,
   `pro_price` varchar(100) NOT NULL,
   `pro_model` varchar(100) NOT NULL,
   `pro_keyword` varchar(100) NOT NULL,
   `pro_added_date` timestamp NULL DEFAULT NULL,
+  `rating` int(100) NOT NULL,
   PRIMARY KEY (`pro_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `products`
+-- Table structure for table `product_review`
 --
 
-INSERT INTO `products` (`pro_id`, `pro_name`, `cat_id`, `sub_cat_id`, `pro_img1`, `pro_img2`, `pro_img3`, `pro_img4`, `pro_feature1`, `pro_feature2`, `pro_feature3`, `pro_feature4`, `pro_feature5`, `pro_price`, `pro_model`, `pro_keyword`, `pro_added_date`) VALUES
-(9, 'native egg', 17, '19', 'eggs2854-450x303.jpg', '', '', '', 'na', 'na', 'na', 'na', 'na', '180', 'magnolia', 'fresh chicken', '2018-08-11 16:31:42'),
-(8, 'chicken', 17, '19', 'RawChicken020617-1540x800.jpg', '', '', '', 'na', 'na', 'na', 'na', 'na', '200', 'magnolia', 'fresh chicken', '2018-08-11 16:31:09'),
-(10, 'chic native', 17, '19', 'Sanderson-Farms-Q2-2016.jpg', '', '', '', 'na', 'na', 'na', 'na', 'na', '350', 'magnolia', 'fresh chicken', '2018-08-11 16:32:16'),
-(11, 'beef', 17, '19', 'TF-8-23-MCOOL-422x281.jpg', '', '', '', 'na', 'na', 'na', 'na', 'na', '500', 'corn beef', 'fresbeef', '2018-08-11 16:32:55'),
-(13, 'pig', 18, '15', 'Pig+Farming+in+Nigeria.jpg', '', '', '', '50 killo', 'nothing', 'boy', '', '', '150', 'na', 'livestock', '2018-08-11 18:21:42'),
-(14, 'goat', 18, '18', 'Pig+Farming+in+Nigeria.jpg', '', '', '', '20 killo', 'nothing', 'boy', '', '', '300', 'na', 'livestock', '2018-08-11 18:22:04'),
-(15, 'cow', 18, '19', 'cattle-must-be-vaccinated-against-disease.jpg', '', '', '', '30 killo', 'nothing', 'boy', '', '', '350', 'na', 'livestock', '2018-08-11 18:22:51'),
-(16, 'pig', 18, '19', 'Pig+Farming+in+Nigeria.jpg', '', '', '', 'na', 'na', 'na', 'na', 'na', '250', 'na', 'sadsdas', '2018-08-11 18:32:48'),
-(17, 'Kambing', 18, '15', 'goats-index.jpg', '', '', '', '', '', '', '', '', '770', '', 'organic', '2018-08-15 04:59:04'),
-(18, 'pumpkin', 19, '14', 'pumpkin.jpg', '', '', '', '', '', '', '', '', '50', '', 'kalabasa', '2018-08-29 02:16:47'),
-(19, 'carrots', 19, '14', 'carrots.jpeg', '', '', '', '', '', '', '', '', '80', '', 'carrots', '2018-08-29 02:17:08'),
-(20, 'repolyo', 19, '14', 'repolyo.jpg', '', '', '', '', '', '', '', '', '100', '', 'repolyo', '2018-08-29 02:18:04'),
-(21, 'talong', 19, '14', 'eggplant.jpg', '', '', '', '', '', '', '', '', '70', '', 'talong', '2018-08-29 02:18:34'),
-(22, 'durian', 20, '14', 'Fresh-Durian.jpg', '', '', '', '', '', '', '', '', '50', '', 'fresh', '2018-08-29 02:47:37'),
-(23, 'mango', 20, '14', 'mango.jpg', '', '', '', '', '', '', '', '', '70', '', 'fresh', '2018-08-29 02:47:55'),
-(24, 'grapes', 20, '14', 'grapes.jpg', '', '', '', '', '', '', '', '', '70', '', 'fresh', '2018-08-29 02:48:14'),
-(25, 'native egg', 17, '14', 'silo-brown-egg.jpg', '', '', '', '', '', '', '', '', '9', '', '', '2018-09-18 21:28:38');
+DROP TABLE IF EXISTS `product_review`;
+CREATE TABLE IF NOT EXISTS `product_review` (
+  `review_id` int(100) NOT NULL AUTO_INCREMENT,
+  `pro_id` int(100) NOT NULL,
+  `users_name` varchar(100) NOT NULL,
+  `users_email` varchar(100) NOT NULL,
+  `review` text NOT NULL,
+  `review_added_date` timestamp NOT NULL,
+  `rating` int(11) NOT NULL,
+  PRIMARY KEY (`review_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product_review`
+--
+
+INSERT INTO `product_review` (`review_id`, `pro_id`, `users_name`, `users_email`, `review`, `review_added_date`, `rating`) VALUES
+(1, 1, '1', '1', 'dsada', '2018-09-26 16:00:00', 1),
+(2, 10, '', 'cabanlit08@gmail.com', ' propropropropropropropropropropropropropropropropropropropropropropropropropropropropropro', '2018-09-27 05:54:29', 4),
+(3, 10, 'wilson', 'cabanlit08@gmail.com', ' propropropropropropropropropropropropropropropropropropropropropropropropropropropropropro', '2018-09-27 05:54:48', 4);
 
 -- --------------------------------------------------------
 
@@ -183,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Bday` date NOT NULL,
   `Address` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -198,7 +208,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `Fname`, `Lname`, `Gender`, `
 (6, 'dkasd', 'fnvdfg', 'skdfsd', 'sdf', 'sdfsdfds', '0021-12-31', 'sdfs'),
 (7, 'werwer', 'werwerew', 'dsfsdfsd', 'fsdfsd', 'fsdfsd', '3132-12-31', 'sdfsdfdsdfs'),
 (8, 'badak123', '123456789', 'badak', 'alterado', 'female', '2000-02-12', 'BAT. compound davao city'),
-(9, 'sdsfjb', '`hsbdgfhbshj`', 'hdbvjdbvh', 'shdbvdh', 'sdfshg', '8345-03-05', '`sbdgds');
+(9, 'sdsfjb', '`hsbdgfhbshj`', 'hdbvjdbvh', 'shdbvdh', 'sdfshg', '8345-03-05', '`sbdgds'),
+(10, 'sdkjgfjdfg', 'jhghjdgsf', 'hgjhghjdfg', 'hjghjdgfhg', 'jdshf', '2018-09-23', 'jhghjg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

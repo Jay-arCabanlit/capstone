@@ -152,7 +152,7 @@ $result = $product->viewallproduct();
                         <th>Product Id</th>
                         <th>Product Name</th>
                         <th>Product Image</th>
-                        <th>Product Feature 1</th>
+                        <th>Availability</th>
                         <th>Product Feature 2</th>
                         <th>Product Feature 3</th>
                         <th>Product Feature 4</th>
@@ -173,7 +173,7 @@ $result = $product->viewallproduct();
                             <img class="img-size" src="../img/<?php echo $d->pro_img3;  ?>">
                             <img class="img-size" src="../img/<?php echo $d->pro_img4;  ?>">
                         </td>
-                        <td><?php echo $d->pro_feature1; ?></td>
+                        <td><?php echo $d->availability; ?></td>
                         <td><?php echo $d->pro_feature2; ?></td>
                         <td><?php echo $d->pro_feature3; ?></td>
                         <td><?php echo $d->pro_feature4; ?></td>

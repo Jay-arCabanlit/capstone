@@ -133,11 +133,14 @@ global $connect;
                           <input class="form-control" name="proimgtree" type="file" placeholder="Select product image3"><br>
                           <input class="form-control" name="proimgfour" type="file" placeholder="Select product image4"><br>
                           <input class="form-control" name="proimgfive" type="file" placeholder="Select product image5"><br>
-                          <input class="form-control" type="text" placeholder="Inter feature1" name="profeatureone"><br>
+                          <select class="btn btn-secondary dropdown-toggle" name="AvailaBility" id="dropdownMenu1" >
+                          <option value="In Stock">In Stock</option>
+                          <option value="To harvest">To Harvest</option>
+                          </select>
                           <input class="form-control" type="text" placeholder="Inter feature2" name="profeaturetwo"><br>
                           <input class="form-control" type="text" placeholder="Inter feature3" name="profeaturetree"><br>
                           <input class="form-control" type="text" placeholder="Inter feature4" name="profeaturefour"><br>
-                          <input class="form-control" type="text" placeholder="Inter feature5" name="profeaturefive"><br>
+                          <textarea class="form-control" type="text" placeholder="Write something About your product" name="profeaturefive"></textarea><br>
                           <input class="form-control" type="text" placeholder="Inter price" name="proprice"><br>
                           <input class="form-control" type="text" placeholder="Inter model" name="promodel"><br>
                            <input class="form-control" type="text" placeholder="Inter keyword" name="prokeyword"><br>
