@@ -3,11 +3,14 @@ session_start();
 include "function/function.php";
 include "connect/connection.php";
 include "function/class_view.php";
+include "class_ip.php";
 $product =  new viewallproducts;
 $result = $product->poultry();
 $resultlive = $product->livestock();
 $resultvege = $product->vegetable();
 $resultfruits = $product->fruits();
+$Cart = new GetIp;
+$count = $Cart->cartcount();
 global $connect;
  ?>
 
@@ -115,7 +118,11 @@ global $connect;
 
 
 
+<<<<<<< HEAD
 							
+=======
+						<a href="regestration_form.php" class="text-uppercase">Join</a>
+>>>>>>> 756cece9fd3b3255c7813b292b097d8778db0e16
 							<ul class="custom-menu">
 								<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
 								<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
@@ -132,12 +139,12 @@ global $connect;
 							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 								<div class="header-btns-icon">
 									<i class="fa fa-shopping-cart"></i>
-									<span class="qty">3</span>
+									<span class="qty"><?php echo $count; ?></span>
 								</div>
 								<strong class="text-uppercase">My Cart:</strong>
 								<br>
 								<span>35.20$</span>
-							</a>
+							</a>	
 							<div class="custom-menu">
 								<div id="shopping-cart">
 									<div class="shopping-cart-list">
@@ -457,30 +464,41 @@ global $connect;
 							<!-- Product Single -->
 								<?php 
 								foreach ($resultlive as $show) {
-									$show_livestock = "							
-							<div class='product product-single'>
-								<div class='product-thumb'>
-									<a href='product-page/product-page.php?prodetails=".$show->pro_id."'>
-									<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
-									<img src='img/".$show->pro_img1."' alt='>
-								</div>
-								<div class='product-body'>
-									<h3 class='product-price'>P".$show->pro_price."</h3>
-									<div class='product-rating'>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star-o empty'></i>
-									</div>
-									<h2 class='product-name'><a href='#'>".$show->pro_name."</a></h2>
-									<div class='product-btns'>
-										<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
-										<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
-										<button class='primary-btn add-to-cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button>
-									</div>
-								</div>
-							</div>";
+									$show_livestock = "
+
+						<div class='col-md-3 col-sm-6 col-xs-6'>
+					<div class='product product-single'>
+						<div class='product-thumb'>
+							<div class='product-label'>
+								<span>New</span>
+								<span class='sale'>-20%</span>
+							</div>
+							<a href='product-page/product-page.php?prodetails=".$show->pro_id."'>
+							<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
+							<img src='img/".$show->pro_img1."' alt=''>
+						</div>
+						<div class='product-body'>
+							<h3 class='product-price'><b>P</b>".$show->pro_price."</h3>
+							<div class='product-rating'>
+								<i class='fa fa-star'></i>
+								<i class='fa fa-star'></i>
+								<i class='fa fa-star'></i>
+								<i class='fa fa-star'></i>
+								<i class='fa fa-star-o empty'></i>
+							</div>
+							<h2 class='product-name'><a href='#'>".$show->pro_name."</a></h2>
+							<div class='product-btns'>
+								<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
+								<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
+										<form method='post' action='cart.php'>
+										<input type='hidden' name='proid' value='".$show->pro_id."'></>
+										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+									";
 
 							echo $show_livestock;
 									# code...
@@ -588,7 +606,9 @@ global $connect;
 							<div class='product-btns'>
 								<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
 								<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
-								<button class='primary-btn add-to-cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button>
+								<form method='post' action='cart.php'>
+									<input type='hidden' name='proid' value='".$veges->pro_id."'></>
+										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 							</div>
 						</div>
 					</div>
@@ -615,17 +635,17 @@ global $connect;
 				<!-- section title -->
 				<!-- Product Single -->
 				<?php 
-				foreach ($resultfruits as $fruit) {
+				foreach ($resultfruits as $fruits) {
 					$fruit = "
 					<div class='col-md-3 col-sm-6 col-xs-6'>
 					<div class='product product-single'>
 						<div class='product-thumb'>
-							<a href=product-page/product-page.php?prodetails=".$fruit->pro_id."'>
-									<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
-							<img src='img/".$fruit->pro_img1."' alt='>
+						<a href='product-page/product-page.php?prodetails=".$fruits->pro_id."'>
+							<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
+							<img src='img/".$fruits->pro_img1."' alt=''>
 						</div>
 						<div class='product-body'>
-							<h3 class='product-price'>P".$fruit->pro_price."</h3>
+							<h3 class='product-price'><b>P</b>".$fruits->pro_price."</h3>
 							<div class='product-rating'>
 								<i class='fa fa-star'></i>
 								<i class='fa fa-star'></i>
@@ -633,11 +653,13 @@ global $connect;
 								<i class='fa fa-star'></i>
 								<i class='fa fa-star-o empty'></i>
 							</div>
-							<h2 class='product-name'><a href='#'>".$fruit->pro_name."</a></h2>
+							<h2 class='product-name'><a href='#'>".$fruits->pro_name."</a></h2>
 							<div class='product-btns'>
 								<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
 								<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
-								<button class='primary-btn add-to-cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button>
+									<form method='post' action='cart.php'>
+									<input type='hidden' name='proid' value='".$fruits->pro_id."'></>
+										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 							</div>
 						</div>
 					</div>
@@ -695,7 +717,7 @@ global $connect;
 							<li><a href="#">My Account</a></li>
 							<li><a href="#">My Wishlist</a></li>
 							<li><a href="#">Compare</a></li>
-							<li><a href="#">Checkout</a></li>
+							<li><a href="Checkout.php">Checkout</a></li>
 							<li><a href="#">Login</a></li>
 						</ul>
 					</div>
