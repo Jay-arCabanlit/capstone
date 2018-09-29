@@ -139,7 +139,7 @@ global $connect;
                           <img class="img-size" src="../img/<?php echo $pro->pro_img3;  ?>">
                           <input class="form-control" name="updateimgfour" type="file" placeholder="Update product image4"><br>
                           <img class="img-size" src="../img/<?php echo $pro->pro_img4;  ?>">
-                          <input class="form-control" type="text" placeholder="Update feature1" name="updatefeatureone" value="<?php echo $pro->pro_feature1; ?>"><br>
+                          <input class="form-control" type="text" placeholder="Update feature1" name="updatefeatureone" value="<?php echo $pro->availability; ?>"><br>
                           <input class="form-control" type="text" placeholder="Update feature2" name="updatefeaturetwo" value="<?php echo $pro->pro_feature2; ?>"><br>
                           <input class="form-control" type="text" placeholder="Update feature3" name="updatefeaturetree" value="<?php echo $pro->pro_feature3; ?>"><br>
                           <input class="form-control" type="text" placeholder="Update feature4" name="updatefeaturefour" value="<?php echo $pro->pro_feature4; ?>"><br>

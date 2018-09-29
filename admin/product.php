@@ -122,7 +122,7 @@ session_start();
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                   <a class="dropdown-item" href="main_category.php">Add Category</a><br>
                   <a class="dropdown-item" href="sub_category.php">Sub Category</a><br>
-                  <a class="dropdown-item" href="create_product">create product</a><br>
+                  <a class="dropdown-item" href="create_product.php">create product</a><br>
                   <a class="dropdown-item" href="product_list.php">product_list</a>
                 </div>
  

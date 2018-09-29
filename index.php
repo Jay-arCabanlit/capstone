@@ -46,6 +46,8 @@ global $connect;
 
 	<link rel="stylesheet" type="text/css" href="assets/css/login_css.css">
 
+<!-- 	<link rel="stylesheet" type="text/css" href="admin/css/moded.css"> -->
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -66,7 +68,7 @@ global $connect;
 					<!-- Logo -->
 					<div class="header-logo">
 						<a class="logo" href="#">
-							<img src="./img/logo1.png" alt="">
+							<img src="./img/logo1.png" alt="" style="width:200px;height:120px;">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -297,7 +299,7 @@ global $connect;
 					<a class="banner banner-1" href="#">
 						<img src="./img/chicken.jpg" alt="">
 						<div class="banner-caption text-center">
-							<h2 class="white-color">Puoltry</h2>
+							<h2 class="white-color">Poultry</h2>
 						</div>
 					</a>
 				</div>
@@ -341,7 +343,7 @@ global $connect;
 				<!-- section-title -->
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2 class="title">Puoltry</h2>
+						<h2 class="title">Poultry</h2>
 						<div class="pull-right">
 							<div class="product-slick-dots-1 custom-dots"></div>
 						</div>
@@ -393,9 +395,6 @@ global $connect;
 									</div>
 									<h2 class='product-name'><a href='#'>".$poultry->pro_name."</a></h2>
 									<div class='product-btns'>
-
-										<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
-										<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
 										<form method='post' action='cart.php'>
 										<input type='hidden' name='proid' value='".$poultry->pro_id."'></>
 										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
@@ -440,22 +439,6 @@ global $connect;
 							<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
 							<img src="./img/product01.jpg" alt="">
 						</div>
-						<div class="product-body">
-							<h3 class="product-price">$32.50 <del class="product-old-price">$45.00</del></h3>
-							<div class="product-rating">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star-o empty"></i>
-							</div>
-							<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-							<div class="product-btns">
-								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-							</div>
-						</div>
 					</div>
 				</div>
 				<div class="col-md-9 col-sm-6 col-xs-6">
@@ -470,8 +453,6 @@ global $connect;
 					<div class='product product-single'>
 						<div class='product-thumb'>
 							<div class='product-label'>
-								<span>New</span>
-								<span class='sale'>-20%</span>
 							</div>
 							<a href='product-page/product-page.php?prodetails=".$show->pro_id."'>
 							<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
@@ -488,8 +469,6 @@ global $connect;
 							</div>
 							<h2 class='product-name'><a href='#'>".$show->pro_name."</a></h2>
 							<div class='product-btns'>
-								<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
-								<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
 										<form method='post' action='cart.php'>
 										<input type='hidden' name='proid' value='".$show->pro_id."'></>
 										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
@@ -604,8 +583,6 @@ global $connect;
 							</div>
 							<h2 class='product-name'><a href='#'>".$veges->pro_name."</a></h2>
 							<div class='product-btns'>
-								<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
-								<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
 								<form method='post' action='cart.php'>
 									<input type='hidden' name='proid' value='".$veges->pro_id."'></>
 										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
@@ -655,8 +632,6 @@ global $connect;
 							</div>
 							<h2 class='product-name'><a href='#'>".$fruits->pro_name."</a></h2>
 							<div class='product-btns'>
-								<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
-								<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
 									<form method='post' action='cart.php'>
 									<input type='hidden' name='proid' value='".$fruits->pro_id."'></>
 										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
@@ -689,7 +664,7 @@ global $connect;
 						<!-- footer logo -->
 						<div class="footer-logo">
 							<a class="logo" href="#">
-		            <img src="./img/logo1.png" alt="">
+		            <img src="./img/logo1.png" alt="" class="logosize">
 		          </a>
 						</div>
 						<!-- /footer logo -->
