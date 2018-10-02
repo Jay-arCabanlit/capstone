@@ -7,7 +7,7 @@
 	<p style="font-size: 12px; color: red"> Note: Only registered numbers <br>are available for twilio trial!* <br> Number must start with '63'*</p>
 
 	<p>Number: </p>
-	<input type="text" name="number" maxlength="12" placeholder="number" required><br>
+	<input type="text" name="number" maxlength="12" placeholder="Ex. 639507550261" required><br>
 
 	<p>Message: </p>
 	<textarea name="message" id="" cols="30" rows="10" maxlength="150"></textarea>

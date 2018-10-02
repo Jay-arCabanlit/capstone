@@ -11,11 +11,14 @@ $sid = 'AC418da46149b758eb8c6672a8220e74d5';
 $token = '2520d19d4c22e532585da4b5db3b34e2';
 $client = new Client($sid, $token);
 
+$verifiedNum = ['639507550261', '639074239571', '639505402812']; 
+
 if(isset($_POST['sms'])) {
 	$num = $_POST['number'];
 	$msg = $_POST['message'];
 	$error = 0;
-	//validation
+
+	//number validation
 	if(strlen($num) != 12) {
 		$m = '&message="Length Invalid!"';
 		$error++;
@@ -24,12 +27,18 @@ if(isset($_POST['sms'])) {
 		$m = '&message="Invalid Input!"';
 		$error++;
 	}
-
+	//must have a msg or twilio will throw an exception
 	if(strlen($msg) == 0){
 		$m = '&message="No message to send!"';
 		$error++;
 	}
+	//use verfied number for free sending
+	if(!in_array($num, $verifiedNum)) {
+		$m = '&message="Number not verified in twilio, pls use verified numbers!"';
+		$error++;
+	}
 
+	//if there is an error then redirect back and die here
 	if($error > 0) {
 		$url = $_SERVER['HTTP_REFERER'].'?status=error'.$m;
 		header("Location: {$url}");
