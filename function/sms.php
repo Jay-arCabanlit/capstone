@@ -14,20 +14,26 @@ $client = new Client($sid, $token);
 if(isset($_POST['sms'])) {
 	$num = $_POST['number'];
 	$msg = $_POST['message'];
-
+	$error = 0;
 	//validation
-	if(strlen($num) != 14) {
-		$url = $_SERVER['HTTP_REFERER'].'?status=error&message="Length Invalid!"';
-		header("Location: {$url}");
+	if(strlen($num) != 12) {
+		$m = '&message="Length Invalid!"';
+		$error++;
 	}
 	else if(!is_numeric($num)) {
-		$url = $_SERVER['HTTP_REFERER'].'?status=error&message="Invalid Input!"';
-		header("Location: {$url}");
+		$m = '&message="Invalid Input!"';
+		$error++;
 	}
 
 	if(strlen($msg) == 0){
-		$url = $_SERVER['HTTP_REFERER'].'?status=error&message="No message to send!"';
+		$m = '&message="No message to send!"';
+		$error++;
+	}
+
+	if($error > 0) {
+		$url = $_SERVER['HTTP_REFERER'].'?status=error'.$m;
 		header("Location: {$url}");
+		die();
 	}
 
 	// Use the client to do fun stuff like send text messages!
