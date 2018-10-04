@@ -1,11 +1,10 @@
-<?php 
+<?php
 session_start();
 include "../connect/connection.php";
-include "../function/class_product.php";
-$user = new products;
-$result = $user->viewcat();
-$subcatresult = $user->viewsubcat();
-global $connect;
+include "../function/class_users.php";
+
+$usersdetails = new users_info;
+$usersInfo = $usersdetails->AllUsers();
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +12,7 @@ global $connect;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Area | Pages</title>
+    <title>Admin Area</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -34,8 +33,8 @@ global $connect;
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Dashboard</a></li>
-            <li class="active"><a href="pages.html">Pages</a></li>
+            <li class="active"><a href="index.html">Dashboard</a></li>
+            <li><a href="pages.html">Users Table</a></li>
             <li><a href="posts.html">Posts</a></li>
             <li><a href="users.html">Users</a></li>
           </ul>
@@ -51,7 +50,7 @@ global $connect;
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Pages<small>Manage Site Pages</small></h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>ADMIN<small></small></h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
@@ -73,8 +72,7 @@ global $connect;
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="index.html">Dashboard</a></li>
-          <li class="active">Pages</li>
+          <li class="active">Dashboard</li>
         </ol>
       </div>
     </section>
@@ -87,56 +85,78 @@ global $connect;
               <a href="index.html" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Users Table <span class="badge"></span></a>
-              <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>product list<span class="badge"></span></a>
-              <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge"></span></a>
-              <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge"></span></a>
-              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge"></span></a>
+              <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Users Table <span class="badge">12</span></a>
+              <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-inbox" aria-hidden="true">&nbsp;</span>product list<span class="badge">33</span></a>
+              <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge">203</span></a>
+              <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge">203</span></a>
+              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge">203</span></a>
+
             </div>
+
           </div>
           <div class="col-md-9">
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Pages</h3 >
+                <h3 class="panel-title">Website Overview</h3>
               </div>
               <div class="panel-body">
-                <div class="row">
-                      <div class="col-md-12">
-                        <form  action="add_category.php" method="post" class="form-inline">
-                          <select class="" name="catname">
-                              <option selected>Select Category</option>
-                            <?php foreach ($result as $d): ?>
-                          <option value="<?php echo $d->cat_id; ?>"><?php echo $d->cat_name; ?></option>
-                           <?php endforeach; ?>
-                        </select>
-                          <input class="form-control"  type="text" name="subcat" placeholder="Add Sub-Category">
-                          <button type="submit" name="add_cat" class="btn btn-success">Submit</button>
-                          </form>
-                          <br>
-                           <table class="table table-striped table-hover">
-                                <tr>
-                                  <th>Sub-category ID</th>
-                                  <th>Category Name</th>
-                                  <th>DELETE</th>
-                                  <th>EDIT</th>
-                                </tr>
-                                <tr>
-                                  <?php foreach ($subcatresult as $d): ?>
-                                  <td><?php echo $d->sub_cat_id; ?></td>
-                                  <td><?php echo $d->sub_cat_name; ?></td>
-                                  <td><a href="delete.php?subcatid=<?php echo $d->sub_cat_id;?>">Delete</a></td>
-                                  <th><a href="sub_cat_update.php?catid=<?php echo $d->sub_cat_id; ?>">Edit</a></th>
-                                </tr>
-                                 <?php endforeach; ?>
-                              </table>
-                      </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 203</h2>
+                    <h4>Users</h4>
+                  </div>
                 </div>
-                <br>
-               
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 12</h2>
+                    <h4>Pages</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 33</h2>
+                    <h4>Posts</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 12,334</h2>
+                    <h4>Visitors</h4>
+                  </div>
+                </div>
               </div>
               </div>
 
+              <!-- Latest Users -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Latest Users</h3>
+                </div>
+                <div class="panel-body">
+                  <?php foreach ($usersInfo as $d): ?>
+              
+                  <table class="table table-striped table-hover">
+                      <tr>
+                        <th>Users Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Id Type</th>
+                        <th>Id Number</th>
+                        <th>ID</th>
+                      </tr>
+                      <tr>
+                        <td><?php echo $d['username']; ?></td>
+                        <td><?php echo $d['Fname']; ?></td>
+                        <td><?php echo $d['Lname']; ?></td>
+                        <td><?php echo $d['id_type']; ?></td>
+                        <td><?php echo $d['id_number']; ?></td>
+                        <td><?php echo $d['users_img']; ?></td>
+                      </tr>
+                    </table>
+                     <?php endforeach ?>
+                </div>
+              </div>
           </div>
         </div>
       </div>

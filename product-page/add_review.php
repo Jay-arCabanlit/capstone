@@ -16,7 +16,7 @@ if (isset($_POST['add_review'])) {
 	$add_review = $connect->prepare("INSERT INTO `product_review` (`review_id`, `pro_id`, `users_name`, `users_email`, `review`, `review_added_date`, `rating`) VALUES (NULL, '$pro_id', '$UsersName', '$Email', '$Review', NOW(), '$ratings')");
 
 	if ($add_review->execute()) {
-		echo "success";
+		echo "<script>window.open('product-page.php','_self');alert('review submit successfully');</script>";
 	}else{
 		echo "ERROR";
 	}

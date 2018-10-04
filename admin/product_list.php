@@ -85,25 +85,11 @@ $result = $product->viewallproduct();
               <a href="index.html" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Pages <span class="badge">12</span></a>
-              <a href="posts.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Posts <span class="badge">33</span></a>
-              <a href="product.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Product <span class="badge">203</span></a>
-              <a href="users.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
-            </div>
-
-            <div class="well">
-              <h4>Disk Space Used</h4>
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                      60%
-              </div>
-            </div>
-            <h4>Bandwidth Used </h4>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    40%
-            </div>
-          </div>
+              <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Users Table <span class="badge"></span></a>
+              <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>product list<span class="badge"></span></a>
+              <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge"></span></a>
+              <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge"></span></a>
+              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge"></span></a>
             </div>
           </div>
           <div class="col-md-9">
@@ -150,16 +136,12 @@ $result = $product->viewallproduct();
                   <table class="table table-bordered table-condense">
                       <tr>
                         <th>Product Id</th>
+                        <th>Users ID</th>
                         <th>Product Name</th>
                         <th>Product Image</th>
                         <th>Availability</th>
-                        <th>Product Feature 2</th>
-                        <th>Product Feature 3</th>
-                        <th>Product Feature 4</th>
-                        <th>Product Feature 5</th>
+
                         <th>Price</th>
-                        <th>Model</th>
-                        <th>Keyword</th>
                         <th>Added date</th>
                         <th>DELETE</th>
                         <th>EDIT</th>
@@ -167,6 +149,7 @@ $result = $product->viewallproduct();
                       <tr>
                         <?php foreach ($result as $d):?>
                         <td><?php echo $d->pro_id; ?></td>
+                        <td><?php echo $d->users_id; ?></td>
                         <td><?php echo $d->pro_name; ?></td>
                         <td><img class="img-size" src="../img/<?php echo $d->pro_img1;  ?>">
                             <img class="img-size" src="../img/<?php echo $d->pro_img2;  ?>">
@@ -174,13 +157,7 @@ $result = $product->viewallproduct();
                             <img class="img-size" src="../img/<?php echo $d->pro_img4;  ?>">
                         </td>
                         <td><?php echo $d->availability; ?></td>
-                        <td><?php echo $d->pro_feature2; ?></td>
-                        <td><?php echo $d->pro_feature3; ?></td>
-                        <td><?php echo $d->pro_feature4; ?></td>
-                        <td><?php echo $d->pro_feature5; ?></td>
                         <td><?php echo $d->pro_price; ?></td>
-                        <td><?php echo $d->pro_model; ?></td>
-                        <td><?php echo $d->pro_keyword; ?></td>
                         <td><?php echo $d->pro_added_date; ?></td>
                         <td><a href="delete.php?productid=<?php echo $d->pro_id; ?>">Delete</a></td>
                         <td><a href="update_product.php?proid=<?php echo $d->pro_id; ?>">Edit</a></td>

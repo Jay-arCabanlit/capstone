@@ -67,7 +67,7 @@ global $connect;
 				<div class="pull-left">
 					<!-- Logo -->
 					<div class="header-logo">
-						<a class="logo" href="#">
+						<a class="logo" href="index.php">
 							<img src="./img/logo1.png" alt="" style="width:200px;height:120px;">
 						</a>
 					</div>
@@ -132,47 +132,6 @@ global $connect;
 						<!-- /Account -->
 
 						<!-- Cart -->
-						<li class="header-cart dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-								<div class="header-btns-icon">
-									<i class="fa fa-shopping-cart"></i>
-									<span class="qty"><?php echo $count; ?></span>
-								</div>
-								<strong class="text-uppercase">My Cart:</strong>
-								<br>
-								<span>35.20$</span>
-							</a>	
-							<div class="custom-menu">
-								<div id="shopping-cart">
-									<div class="shopping-cart-list">
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="./img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="./img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-									</div>
-									<div class="shopping-cart-btns">
-										<button class="main-btn">View Cart</button>
-										<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
-									</div>
-								</div>
-							</div>
-						</li>
 						<!-- /Cart -->
 
 						<!-- Mobile nav toggle-->
@@ -199,16 +158,15 @@ global $connect;
 					<span class="category-header">Categories <i class="fa fa-list"></i></span>
 					<ul class="category-list">
 						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Organic</a>
+							<a href="product-page/products.php?cat_id=24" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Fertilizer</a>
 						</li>
-						<li><a href="#">Vegetables</a></li>
-						<li><a href="#">Fruits</a></li>
-						<li><a href="#">Livestocks</a></li>
-						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Poultry </a>
+						<li><a href="product-page/products.php?cat_id=19">Vegetables</a></li>
+						<li><a href="product-page/products.php?cat_id=20">Fruits</a></li>
+						<li><a href="product-page/products.php?cat_id=18">Livestocks</a></li>
+						<li><a href="product-page/products.php?cat_id=17">Poultry </a>
 						</li>
-						<li><a href="#">Rice</a></li>
-						<li><a href="#">View All</a></li>
+						<li><a href="product-page/products.php?cat_id=29">Rice</a></li>
+						<li><a href="product-page/products.php?cat_id=23">Beans</a></li>
 					</ul>
 				</div>
 				<!-- /category nav -->
@@ -390,9 +348,6 @@ global $connect;
 									</div>
 									<h2 class='product-name'><a href='#'>".$poultry->pro_name."</a></h2>
 									<div class='product-btns'>
-										<form method='post' action='cart.php'>
-										<input type='hidden' name='proid' value='".$poultry->pro_id."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 									</div>
 								</div>
 							</div>";
@@ -464,9 +419,6 @@ global $connect;
 							</div>
 							<h2 class='product-name'><a href='#'>".$show->pro_name."</a></h2>
 							<div class='product-btns'>
-										<form method='post' action='cart.php'>
-										<input type='hidden' name='proid' value='".$show->pro_id."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 							</div>
 						</div>
 					</div>
@@ -578,9 +530,7 @@ global $connect;
 							</div>
 							<h2 class='product-name'><a href='#'>".$veges->pro_name."</a></h2>
 							<div class='product-btns'>
-								<form method='post' action='cart.php'>
-									<input type='hidden' name='proid' value='".$veges->pro_id."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
+
 							</div>
 						</div>
 					</div>
@@ -627,9 +577,6 @@ global $connect;
 							</div>
 							<h2 class='product-name'><a href='#'>".$fruits->pro_name."</a></h2>
 							<div class='product-btns'>
-									<form method='post' action='cart.php'>
-									<input type='hidden' name='proid' value='".$fruits->pro_id."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 							</div>
 						</div>
 					</div>
@@ -658,7 +605,7 @@ global $connect;
 					<div class="footer">
 						<!-- footer logo -->
 						<div class="footer-logo">
-							<a class="logo" href="#">
+							<a class="logo" href="index.php">
 		            <img src="./img/logo1.png" alt="" class="logosize">
 		          </a>
 						</div>

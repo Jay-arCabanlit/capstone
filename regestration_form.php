@@ -23,41 +23,57 @@ global $connect;
 	<div></div>
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form role="form" action="regestration.php" method="post">
+		<form role="form" action="regestration.php" method="post" enctype="multipart/form-data">
 			<h2>Please Sign Up <small>It's free and always will be.</small></h2>
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-                        <input type="text" name="uname" id="first_name" class="form-control input-lg" placeholder="Username" tabindex="1">
+                        <input type="text" name="uname" id="first_name" class="form-control input-lg" placeholder="Username" tabindex="1" required>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pword" id="last_name" class="form-control input-lg" placeholder="Password" tabindex="2">
+						<input type="password" name="pword" id="last_name" class="form-control input-lg" placeholder="Password" tabindex="2" required>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="fname" id="display_name" class="form-control input-lg" placeholder="Firstname" tabindex="3">
+				<input type="text" name="fname" id="display_name" class="form-control input-lg" placeholder="Firstname" tabindex="3" required>
 			</div>
 			<div class="form-group">
-				<input type="text" name="lname" id="email" class="form-control input-lg" placeholder="Lastname" tabindex="4">
+				<input type="text" name="lname" id="email" class="form-control input-lg" placeholder="Lastname" tabindex="4" required>
 			</div>
-			<div class="row">
+				<div class="form-group">
+						<input type="date" name="bday" class="form-control input-lg" placeholder="Birtdate" tabindex="6" required>
+					</div>
+				<div class="form-group">
+				<input type="text" name="address"  class="form-control input-lg" placeholder="Address" tabindex="4" required>
+			</div>
+						<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="text" name="gender" id="password" class="form-control input-lg" placeholder="gender" tabindex="5">
+						<select type="text" name="govtypeid" id="password" class="form-control input-lg" placeholder="" tabindex="5" required>
+							<option value="Passport">Passport</option>
+							<option value="Driver's License">Driver's License</option>
+							<option value="SSS ID">SSS ID</option>
+							<option value="Phil Health">Phil Health</option>
+							<option value="Tin ID">Tin ID</option>
+							<option value="Voter's ID">Voter's ID</option>
+							<option value="Senior Citizen ID">Senior Citizen ID</option>
+							<option value="Business Permit">Business Permit</option>
+						</select> 
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="date" name="bday" id="password_confirmation" class="form-control input-lg" placeholder="Birtdate" tabindex="6">
-					</div>
+						<input type="text" name="idnumber" id="password_confirmation" class="form-control input-lg" placeholder="ID Number" tabindex="6" required>
+						<br>
+						   <input class="form-control" name="userImg" type="file" placeholder="Select product image5">
+						<br>	
 				</div>
-						<div class="form-group">
-				<input type="text" name="address" id="email" class="form-control input-lg" placeholder="Address" tabindex="4">
-			</div>
+				<br>	
+
 			</div>
 			<div class="row">
 				<div class="col-xs-4 col-sm-3 col-md-3">
@@ -74,7 +90,6 @@ global $connect;
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-md-6"><input type="submit" name="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>
 			</div>
 		</form>
 	</div>
