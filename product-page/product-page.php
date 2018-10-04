@@ -265,7 +265,6 @@
 									<a href="#">3 Review(s) / Add Review</a>
 								</div>
 								<p><strong>Availability:</strong><?php echo $viewDetails->availability; ?></p>
-								<p><p><?php echo $viewDetails->pro_feature2; ?><?php echo $viewDetails->pro_feature3; ?>. <?php echo $viewDetails->pro_feature4; ?> </p></p>
 								<div class="product-options">
 
 
@@ -299,7 +298,7 @@
 								</ul>
 								<div class="tab-content">
 									<div id="tab1" class="tab-pane fade in active">
-										<p><?php echo $viewDetails->pro_feature5; ?></p>
+										<p></p>
 									</div>
 									<div id="tab2" class="tab-pane fade in">
 

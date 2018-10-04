@@ -22,7 +22,13 @@ $query = $connect->prepare("SELECT * FROM products WHERE users_id = $id");
 $query->execute();
 $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
+if(isset($_GET['action']) && $_GET['action']=='delete'){
+ 	$sth = $connect->prepare("DELETE FROM products WHERE pro_id = :id");
+ 	$sth->bindValue('id',$_GET['deleteid']);
+ 	if ($sth->execute()) {
+ 		echo "alert('succesfuly Deleted!')</script><script>window.open('user_profile.php','_self');";
+ 	}
+ }
 ?>
 <head>
 	<meta charset="utf-8">
@@ -550,6 +556,9 @@ $results = $query->fetchAll(PDO::FETCH_ASSOC);
 									      <div class="col-sm-4">
 									        <p class="form-control" id="add"><?php echo $user_info->Address; ?></p>
 									      </div>
+									      <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal">
+									      	<span class="fa fa-edit"></span>
+									      </button>
 									    </div>
 									  </form>
 									</div>
@@ -565,6 +574,7 @@ $results = $query->fetchAll(PDO::FETCH_ASSOC);
 									        <th>Description</th>
 									        <th>Availability</th>
 									        <th>Price</th>
+									        <th>Action</th>
 									      </tr>
 									    </thead>
 									    <tbody>
@@ -574,6 +584,14 @@ $results = $query->fetchAll(PDO::FETCH_ASSOC);
 									        <td><?php echo $product['description']; ?></td>
 									        <td><?php echo $product['availability']; ?></td>
 									        <td><?php echo $product['pro_price']; ?></td>
+									        <td>
+									        	<a href="user_profile.php?deleteid=<?php echo $product['pro_id'];?>
+											&action=delete" onclick="return confirm('Are you sure?')">
+									        	<button class="btn btn-xs btn-danger">
+									        		<span class="fa fa-trash"></span>
+									        	</button>
+									        	</a>
+									        </td>
 									      </tr>
 									  	<?php endforeach; ?>
 									    </tbody>
@@ -793,6 +811,7 @@ $results = $query->fetchAll(PDO::FETCH_ASSOC);
 	<!-- /FOOTER -->
 
 	<!-- M O D A L S -->
+		<!-- ADD MODAL -->
 	  <div class="modal fade" id="myModal" role="dialog">
 	    <div class="modal-dialog modal-md">
 	      <!-- Modal content-->
@@ -836,7 +855,28 @@ $results = $query->fetchAll(PDO::FETCH_ASSOC);
 	      
 	    </div>
 	  </div>
+<!-- END -->
+<!-- UPDATE MODAL -->
+<div id="updateModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">EDIT PROFILE</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- END -->
 	<!-- jQuery Plugins -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

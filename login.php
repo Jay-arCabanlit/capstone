@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
 			$count = $stmt2->rowCount();
 					if($account2['password']==$password){
 						$_SESSION['login'] = $account2['users_id'];
-						echo "<script>window.open('user_profile.php','_self');";
+						header("Location:user_profile.php");
 						
 					}else{
 						echo "wrong details";
