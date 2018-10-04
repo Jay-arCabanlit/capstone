@@ -45,7 +45,16 @@ class users {
 
 
 }
-
+class CRUD{
+	function get_user($id){
+		global $connect;
+		$query = $connect->prepare("SELECT * FROM users WHERE users_id = ?");
+		$query->bindParam(1,$id);
+		$query->execute();
+		$results = $query->fetch(PDO::FETCH_OBJ);
+		return $results;
+	}
+}
 
 
 

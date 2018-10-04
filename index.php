@@ -117,14 +117,6 @@ global $connect;
 			</div>
 		  </div>
 		  </form>
-
-
-
-<<<<<<< HEAD
-							
-=======
-						<a href="regestration_form.php" class="text-uppercase">Join</a>
->>>>>>> 756cece9fd3b3255c7813b292b097d8778db0e16
 							<ul class="custom-menu">
 								<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
 								<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
