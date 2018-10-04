@@ -30,7 +30,8 @@ if ($add_cat->execute()) {
 
 	# code...
 }
-
+// Insert product -- users
+$id = $_SESSION['login']; // id sa user
 if (isset($_POST['add_product'])) {
 	$ProName = $_POST['proname'];
 	$CatId = $_POST['catid'];
@@ -44,23 +45,21 @@ if (isset($_POST['add_product'])) {
 	$ProImgFour = $_FILES['proimgfour'] ['name'];
 		$ProImgFour_tmp = $_FILES['proimgfour'] ['tmp_name'];
 	$ProFeatureOne = $_POST['AvailaBility'];
-	$ProFeatureTwo = $_POST['profeaturetwo'];
-	$ProFeatureTree = $_POST['profeaturetree'];
-	$ProFeatureFour = $_POST['profeaturefour'];
-	$ProFeatureFive = $_POST['profeaturefive'];
 	$ProPrice = $_POST['proprice'];
-	$ProModel = $_POST['promodel'];
-	$ProKeyword = $_POST['prokeyword'];
+	$description = $_POST['description'];
 
 	move_uploaded_file($ProImgOne_tmp,"../img/$ProImgOne");
 	move_uploaded_file($ProImgTwo_tmp,"../img/$ProImgTwo");
 	move_uploaded_file($ProImgTree_tmp,"../img/$ProImgTree");
 	move_uploaded_file($ProImgFour_tmp,"../img/$ProImgFour");
 
-	$add_product = $connect->prepare("insert into products(pro_name,cat_id,sub_cat_id,pro_img1,pro_img2,pro_img3,pro_img4,availability,pro_feature2,pro_feature3,pro_feature4,pro_feature5,pro_price,pro_model,pro_keyword,pro_added_date) values ('$ProName','$CatId','$SubCat','$ProImgOne','$ProImgTwo','$ProImgTree','$ProImgFour','$ProFeatureOne','$ProFeatureTwo','$ProFeatureTree','$ProFeatureFour','$ProFeatureFive','$ProPrice','$ProModel','$ProKeyword',NOW())");
+	$add_product = $connect->prepare("insert into products(users_id,pro_name,cat_id,sub_cat_id,pro_img1,pro_img2,pro_img3,pro_img4,availability,description,pro_price,pro_added_date) values ('$id','$ProName','$CatId','$SubCat','$ProImgOne','$ProImgTwo','$ProImgTree','$ProImgFour','$ProFeatureOne','$description','$ProPrice',NOW())");
 
 	if ($add_product->execute()) {
-		echo "finish";
+		echo "<script>
+				alert('Successfully Added!');
+				window.location.href='../user_profile.php';
+				</script>";
 		# code...
 	}else{
 		echo "error";

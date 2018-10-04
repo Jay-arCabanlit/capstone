@@ -2,18 +2,28 @@
 <html lang="en">
 <?php 
 session_start();
+// Check if users is logged in
+if (!isset($_SESSION['login'])) {
+	header('location:404.php');
+}
 global $connect;
 include "connect/connection.php";
 include "function/function.php";
+include "function/class_product.php";
+$user = new products;
+$result = $user->viewcat();
+$view = $user->viewsubcat();
 $CRUD_user = new CRUD;
 // $id = $_SESSION['login'];
 //temporary id
-$id = 11;
+$id = $_SESSION['login'];
 $user_info = $CRUD_user->get_user($id);
 $query = $connect->prepare("SELECT * FROM products WHERE users_id = $id");
 $query->execute();
 $results = $query->fetchAll(PDO::FETCH_ASSOC);
- ?>
+
+
+?>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -104,7 +114,7 @@ $results = $query->fetchAll(PDO::FETCH_ASSOC);
 								</div>
 								<strong class="text-uppercase"><?php echo $user_info->Fname.' '; echo $user_info->Lname?></strong>
 							</div>
-							<a href="" class="text-uppercase">Seller</a>
+							<a href="function/logout.php" class="text-uppercase">Logout</a>
 						</li>
 						<!-- /Account -->
 
@@ -792,11 +802,36 @@ $results = $query->fetchAll(PDO::FETCH_ASSOC);
 	          <h4 class="modal-title">Add Products</h4>
 	        </div>
 	        <div class="modal-body">
-	          <p>Some text in the modal.</p>
+	          <form  action="admin/add_category.php" method="post" enctype="multipart/form-data">
+                          <input class="form-control" type="text" placeholder="Enter product name" name="proname"><br>
+                          <select class="custom-select" name="catid">
+                            <?php foreach ($result as $d): ?>
+                          <option value="<?php echo $d->cat_id; ?>"><?php echo $d->cat_name; ?></option>
+                           <?php endforeach; ?>
+                        </select>
+                          <select class="custom-select" name="subcat">
+                            <?php foreach ($view as $d): ?>
+                          <option value="<?php echo $d->sub_cat_id; ?>"><?php echo $d->sub_cat_name; ?></option>
+                           <?php endforeach; ?>
+                        </select><br>
+                          <input class="form-control" name="proimgone" type="file" placeholder="Select product image1"><br>
+                          <input class="form-control" name="proimgtwo" type="file" placeholder="Select product image2"><br>
+                          <input class="form-control" name="proimgtree" type="file" placeholder="Select product image3"><br>
+                          <input class="form-control" name="proimgfour" type="file" placeholder="Select product image4"><br>
+                          <input class="form-control" name="proimgfive" type="file" placeholder="Select product image5"><br>
+                          <select class="btn btn-secondary dropdown-toggle" name="AvailaBility" id="dropdownMenu1" >
+                          <option value="In Stock">In Stock</option>
+                          <option value="To harvest">To Harvest</option>
+                          </select>
+                          <textarea class="form-control" type="text" placeholder="Description" name="description"></textarea><br>
+                          <input class="form-control" type="text" placeholder="Enter price" name="proprice">
+                          
 	        </div>
 	        <div class="modal-footer">
+	        	 <button type="submit" name="add_product" class="btn btn-success">Submit</button>
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        </div>
+	        </form>
 	      </div>
 	      
 	    </div>
