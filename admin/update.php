@@ -11,7 +11,7 @@ if (isset($_POST['edit'])) {
 	$editquery = $connect->prepare("UPDATE `main_cat` SET `cat_name` = '$Category' WHERE `cat_id` = $CatId ");
 if ($editquery->execute()) {
 	# code...
-	echo "success";
+	echo "<script>window.open('main_category.php','_self');alert('Category Successfully Update');</script>";
 }else{
 	echo "error";
 }
@@ -26,7 +26,7 @@ if (isset($_POST['update'])) {
 	$updatequery = $connect->prepare("UPDATE `sub_cat` SET `sub_cat_name` = '$SubCatName', `cat_id` = '$MainCat' WHERE `sub_cat_id` = $CatID ");
 // var_dump($updatequery);
 	if ($updatequery->execute()) {
-		echo "succes";
+		echo "<script>window.open('sub_category.php','_self');alert('Subcategory Successfully Update');</script>";
 		# code...
 	}else{
 		echo "error";
@@ -68,8 +68,8 @@ if (isset($_POST['update_product'])) {
 
 	$update_product = $connect->prepare("UPDATE `products` SET `pro_name` = '$UpdateName', `cat_id` = '$UpdateCatId', `sub_cat_id` = '$UpdateSubCat', `pro_img1` = '$UpdateImgOne', `pro_img2` = '$UpdateImgTwo', `pro_img3` = '$UpdateImgTree', `pro_img4` = '$UpdateImgFour', `availability` = '$UpdateFeatureOne', `pro_feature2` = 'UpdateFeatureTwo', `pro_feature3` = '$UpdateFeatureTree', `pro_feature4` = '$UpdateFeatureFour', `pro_feature5` = '$UpdateFeatureFive', `pro_price` = '$UpdatePrice', `pro_model` = '$UpdateModel', `pro_keyword` = '$UpdateKeyword', `pro_added_date` = NOW() WHERE `pro_id` = $ProId");
 
-	if ($update_product->execute()) {
-		echo "finish";
+	if ($update_product->exec(command)cute()) {
+		echo "<script>window.open('product_list.php','_self');alert('Product Successfully Update');</script>";
 		# code...
 	}else{
 		echo "error";

@@ -3,7 +3,7 @@
 	include "../connect/connection.php";
 	include "../function/class_productdetails.php";
 	$details = new ViewProductDetails;
-	$viewDetails = $details->AllProductDetails($_GET['prodetails']);
+$viewDetails = $details->AllProductDetails($_GET['prodetails']);
 
 // var_dump($viewDetails);
 // die();
@@ -58,7 +58,7 @@
 					<div class="pull-left">
 						<!-- Logo -->
 						<div class="header-logo">
-							<a class="logo" href="#">
+							<a class="logo" href="../index.php">
 								<img src="../img/logo1.png" alt="" style="width:200px; height:110px;">
 							</a>
 						</div>
@@ -88,61 +88,16 @@
 									</div>
 									<strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
 								</div>
-								<a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+								<a href="../regestration_form.php" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
 								<ul class="custom-menu">
 									<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-									<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-									<li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
-									<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
 									<li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-									<li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+									<li><a href="../regestration_form.php"><i class="fa fa-user-plus"></i> Create An Account</a></li>
 								</ul>
 							</li>
 							<!-- /Account -->
 
 							<!-- Cart -->
-							<li class="header-cart dropdown default-dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-									<div class="header-btns-icon">
-										<i class="fa fa-shopping-cart"></i>
-										<span class="qty">3</span>
-									</div>
-									<strong class="text-uppercase">My Cart:</strong>
-									<br>
-									<span>35.20$</span>
-								</a>
-								<div class="custom-menu">
-									<div id="shopping-cart">
-										<div class="shopping-cart-list">
-											<div class="product product-widget">
-												<div class="product-thumb">
-													<img src="./img/thumb-product01.jpg" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-price"><b>P</b>
-													<span class="qty">x3</span></h3>
-													<h2 class="product-name"><a href="#"></h2>
-												</div>
-												<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-											</div>
-											<div class="product product-widget">
-												<div class="product-thumb">
-													<img src="" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-													<h2 class="product-name"><a href="#"></a></h2>
-												</div>
-												<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-											</div>
-										</div>
-										<div class="shopping-cart-btns">
-											<button class="main-btn">View Cart</button>
-											<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
-										</div>
-									</div>
-								</div>
-							</li>
 							<!-- /Cart -->
 
 							<!-- Mobile nav toggle-->
@@ -168,20 +123,14 @@
 					<div class="category-nav show-on-click">
 						<span class="category-header">Categories <i class="fa fa-list"></i></span>
 						<ul class="category-list">
-							<li class="dropdown side-dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Organic	</i></a>
-								<div class="custom-menu">
-								</div>
-							</li>
-							<li><a href="#">Vegetable</a></li>
-							<li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Fruits</a>
-							</li>
-							<li><a href="#">livestoks</a></li>
-							<li><a href="#">Poultry</a></li>
-							<li class="dropdown side-dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Rice</a>
-							</li>
-							<li><a href="#">View All</a></li>
+						<li><a href="products.php?cat_id=24">Fertilizer</a></li>
+						<li><a href="products.php?cat_id=19">Vegetables</a></li>
+						<li><a href="products.php?cat_id=20">Fruits</a></li>
+						<li><a href="products.php?cat_id=18">Livestocks</a></li>
+						<li><a href="products.php?cat_id=17">Poultry </a>
+						</li>
+						<li><a href="products.php?cat_id=29">Rice</a></li>
+						<li><a href="products.php?cat_id=23">Beans</a></li>
 						</ul>
 					</div>
 					<!-- /category nav -->
@@ -191,7 +140,7 @@
 						<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 						<ul class="menu-list">
 							<li><a href="#">Home</a></li>
-							<li><a href="#">Shop</a></li>
+							<!-- <li><a href="#">Shop</a></li>
 							<li><a href="#">Sales</a></li>
 							<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
 								<ul class="custom-menu">
@@ -200,7 +149,7 @@
 									<li><a href="product-page.html">Product Details</a></li>
 									<li><a href="checkout.html">Checkout</a></li>
 								</ul>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					<!-- menu nav -->
@@ -214,10 +163,9 @@
 		<div id="breadcrumb">
 			<div class="container">
 				<ul class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Products</a></li>
-					<li><a href="#">Category</a></li>
-					<li class="active">Product Name Goes Here</li>
+					<li><a href="../index.php">Home</a></li>
+					<li><a href="#">Products Page</a></li>
+					<li class="active"><?php echo $viewDetails->pro_name; ?></li>
 				</ul>
 			</div>
 		</div>
@@ -253,7 +201,7 @@
 								<div class="product-label">
 								</div>
 								<h2 class="product-name"><?php echo $viewDetails->pro_name;  ?></h2>
-								<h3 class="product-price"><b>P</b><?php echo $viewDetails->pro_price; ?> <del class="product-old-price">$45.00</del></h3>
+								<h3 class="product-price"><b>P</b><?php echo $viewDetails->pro_price; ?> </h3>
 								<div>
 									<div class="product-rating">
 										<i class="fa fa-star"></i>
@@ -262,29 +210,39 @@
 										<i class="fa fa-star"></i>
 										<i class="fa fa-star-o empty"></i>
 									</div>
-									<a href="#">3 Review(s) / Add Review</a>
+									
 								</div>
 								<p><strong>Availability:</strong><?php echo $viewDetails->availability; ?></p>
+
 								<div class="product-options">
 
 
 								</div>
 
 								<div class="product-btns">
-									<div class="qty-input">
-										<span class="text-uppercase">QTY: </span>
-										<input class="input" type="number">
-									</div>
-									<div class="pull-right">
-									<form method="POST" action="../cart.php">
-										<input type="hidden" name="proid" value="<?php $viewDetails->pro_id; ?>" style="position: absolute;">
-										<br>
-									<button class="primary-btn add-to-cart" name="cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+
+									<div class="">
+
+									<form action="../function/sms.php" method="POST">
+									<input type="hidden" name="number" value="639507550261">
+									<div class="form-group">
+									<textarea class="input" placeholder="Hi, I'm interested in this. Is it available?" name="message"></textarea>
+								<button name="sms" type="submit"class="primary-btn add-to-cart"><i class="fa fa-shopping-cart" ></i> Send to Seller</button>
+
+													</div>
 									</form>
-									<!-- <div class="pull-right"> -->
-										<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-										<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-										<button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
+
+<?php 
+
+if(isset($_GET['status']) && $_GET['status'] != 'error') {
+	echo '<h1>'.$_GET['status'].'</h1>';
+} 
+
+if(isset($_GET['status']) && $_GET['status'] == 'error') {
+	echo '<h1 style="color:red">'.$_GET['message'].'</h1>';
+}
+
+?>
 									</div>
 								</div>
 							</div>
@@ -294,40 +252,49 @@
 								<ul class="tab-nav">
 									<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
 									<li><a data-toggle="tab" href="#tab1">Details</a></li>
-									<li><a data-toggle="tab" href="#tab2">Reviews (3)</a></li>
+									<li><a data-toggle="tab" href="#tab2">Reviews</a></li>
 								</ul>
 								<div class="tab-content">
 									<div id="tab1" class="tab-pane fade in active">
-										<p></p>
+
+										<p><?php echo $viewDetails->description; ?></p>
 									</div>
 									<div id="tab2" class="tab-pane fade in">
 
 										<div class="row">
-											<div class="col-md-6">
+											<div class="col-md-6">	
 												<div class="product-reviews">
-													<div class="single-review">
-														<div class="review-heading">
-															<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-															<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-															<div class="review-rating pull-right">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o empty"></i>
+								<?php
+										foreach ($viewDetails->productreview as $review) {
+										$ProductReview = "
+													<div class='single-review'>
+														<div class='review-heading'>
+															<div><a href='#'><i class='fa fa-user-o'></i>".$review['users_name']."</a></div>
+															<div><a href='#'><i class='fa fa-clock-o'></i>".$review['review_added_date']."</a></div>
+															<div class='review-rating pull-right'>
+																<i class='fa fa-star'></i>
+																<i class='fa fa-star'></i>
+																<i class='fa fa-star'></i>
+																<i class='fa fa-star'></i>
+																<i class='fa fa-star-o empty'></i>
 															</div>
 														</div>
-														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-																irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+														<div class='review-body'>
+															<p>".$review['review']."</p>
 														</div>
-													</div>
-													<ul class="reviews-pages">
-														<li class="active">1</li>
-														<li><a href="#">2</a></li>
-														<li><a href="#">3</a></li>
-														<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
+													</div>";
+											echo $ProductReview;
+											# code...
+										}
+										  ?>
+
+														<ul class='reviews-pages'>
+														<li class='active'>1</li>
+														<li><a href='#'>2</a></li>
+														<li><a href='#'>3</a></li>
+														<li><a href='#'><i class='fa fa-caret-right'></i></a></li>
 													</ul>
+
 												</div>
 											</div>
 											<div class="col-md-6">
@@ -406,17 +373,9 @@
 							<div class='product-body'>
 								<h3 class='product-price'><b>P</b>".$relatedview['pro_price']."</h3>
 								<div class='product-rating'>
-									<i class='fa fa-star'></i>
-									<i class='fa fa-star'></i>
-									<i class='fa fa-star'></i>
-									<i class='fa fa-star'></i>
-									<i class='fa fa-star-o empty'></i>
 								</div>
 								<h2 class='product-name'><a href='#'>".$relatedview['pro_name']."</a></h2>
 								<div class='product-btns'>
-									<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>
-									<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>
-									<button class='primary-btn add-to-cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button>
 								</div>
 							</div>
 						</div>

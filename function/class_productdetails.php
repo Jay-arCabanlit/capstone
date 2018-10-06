@@ -3,7 +3,7 @@ include "../connect/connection.php";
 class ViewProductDetails {
 
 function AllProductDetails($id) {
-global $connect;
+global $connect;	
   $sth = $connect->prepare("SELECT * From products WHERE pro_id = ?");
   $sth->bindParam(1,$id);
   $sth->execute();
@@ -14,6 +14,11 @@ global $connect;
   $sth2->execute();
   // return $sth2->fetchAll(PDO::FETCH_ASSOC);
   $results->related_products = $sth2->fetchAll(PDO::FETCH_ASSOC);
+  //
+  $sth3 = $connect->prepare("SELECT * FROM product_review where pro_id = ?");
+  $sth3->bindParam(1,$results->pro_id);
+  $sth3->execute();
+  $results->productreview = $sth3->fetchAll(PDO::FETCH_ASSOC);
   return $results;
 
 
@@ -31,12 +36,14 @@ global $connect;
 
 
 // }
-function DisplayAllProducts(){
+function DisplayAllProducts($id){
 	global $connect;
-	$query = $connect->prepare("SELECT * FROM products order by pro_id"); 
-	$query->execute();
-	$result = $query->fetchAll(PDO::FETCH_OBJ);
-	return $result;
+	$query = $connect->prepare("SELECT * FROM products WHERE cat_id = ?");
+ 	 $query->bindParam(1,$id);
+  	$query->execute();
+  	$results = $query->fetchAll(PDO::FETCH_ASSOC);
+ 	 return $results;
+
 }
 }
 

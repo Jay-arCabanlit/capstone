@@ -51,12 +51,11 @@ global $connect;
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Pages<small>Manage Site Pages</small></h1>
+
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Create Content
+               
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -87,25 +86,14 @@ global $connect;
               <a href="index.html" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Pages <span class="badge">12</span></a>
-              <a href="posts.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Posts <span class="badge">33</span></a>
-              <a href="users.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
+              <a href="admin.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Users Table <span class="badge"></span></a>
+              <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>product list<span class="badge"></span></a>
+              <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge"></span></a>
+              <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge"></span></a>
+              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge"></span></a>
             </div>
 
-            <div class="well">
-              <h4>Disk Space Used</h4>
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                      60%
-              </div>
-            </div>
-            <h4>Bandwidth Used </h4>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    40%
-            </div>
-          </div>
-            </div>
+
           </div>
           <div class="col-md-9">
             <!-- Website Overview -->
@@ -118,32 +106,37 @@ global $connect;
                       <div class="col-md-12">
                         <form  action="add_category.php" method="post" enctype="multipart/form-data">
                           <input class="form-control" type="text" placeholder="Inter product name" name="proname"><br>
-                          <select class="custom-select" name="catid">
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                          <label for="exampleFormControlSelect1">Select Category</label>
+                          <select class="form-control" name="catid">
                             <?php foreach ($result as $d): ?>
                           <option value="<?php echo $d->cat_id; ?>"><?php echo $d->cat_name; ?></option>
                            <?php endforeach; ?>
                         </select>
-                          <select class="custom-select" name="subcat">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label for="exampleFormControlSelect1">Select Subcategory</label>
+                          <select class="form-control" name="subcat">
                             <?php foreach ($view as $d): ?>
                           <option value="<?php echo $d->sub_cat_id; ?>"><?php echo $d->sub_cat_name; ?></option>
                            <?php endforeach; ?>
-                        </select><br>
+                        </select>
+                        </div>
+                        </div><br>
                           <input class="form-control" name="proimgone" type="file" placeholder="Select product image1"><br>
                           <input class="form-control" name="proimgtwo" type="file" placeholder="Select product image2"><br>
                           <input class="form-control" name="proimgtree" type="file" placeholder="Select product image3"><br>
                           <input class="form-control" name="proimgfour" type="file" placeholder="Select product image4"><br>
                           <input class="form-control" name="proimgfive" type="file" placeholder="Select product image5"><br>
-                          <select class="btn btn-secondary dropdown-toggle" name="AvailaBility" id="dropdownMenu1" >
+                          <label class="mr-sm-2" for="inlineFormCustomSelect">Availability</label>
+                          <select class="form-control mb-2 mr-sm-2" name="AvailaBility" id="dropdownMenu1" >
                           <option value="In Stock">In Stock</option>
                           <option value="To harvest">To Harvest</option>
                           </select>
-                          <input class="form-control" type="text" placeholder="Inter feature2" name="profeaturetwo"><br>
-                          <input class="form-control" type="text" placeholder="Inter feature3" name="profeaturetree"><br>
-                          <input class="form-control" type="text" placeholder="Inter feature4" name="profeaturefour"><br>
+                          <br>
                           <textarea class="form-control" type="text" placeholder="Write something About your product" name="profeaturefive"></textarea><br>
                           <input class="form-control" type="text" placeholder="Inter price" name="proprice"><br>
-                          <input class="form-control" type="text" placeholder="Inter model" name="promodel"><br>
-                           <input class="form-control" type="text" placeholder="Inter keyword" name="prokeyword"><br>
                         <br>
                           <button type="submit" name="add_product" class="btn btn-success">Submit</button>
                           </form>

@@ -43,6 +43,15 @@ class users {
 	}
 
 
+	// function AllUsers(){
+	// 	global $connect;
+	// 	$query = $connect->prepare("SELECT * FROM users order by users_id");
+	// 	$query->execute();
+	// 	$result = $query->fetchAll(PDO::FETCH_ASSOC);
+	// 	return $result;
+	// }
+
+
 
 }
 class CRUD{

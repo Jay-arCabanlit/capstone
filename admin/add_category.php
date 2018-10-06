@@ -7,7 +7,7 @@ if (isset($_POST['maincat'])) {
 
 $main_cat = $connect->prepare("insert into main_cat(cat_name) values ('$CatName')");
 if ($main_cat->execute()) {
-	echo "Successfully";
+	echo "<script>window.open('main_category.php','_self');alert('Category Successfully Add');</script>";
 	# code...
 }else {
 	echo "error";
@@ -23,7 +23,7 @@ $add_cat = $connect->prepare("insert into sub_cat(sub_cat_name,cat_id) values ('
 
 if ($add_cat->execute()) {
 
-	echo "<script>alert('Category Added Successfully!!')</script>";
+	echo "<script>window.open('sub_category.php','_self');alert('Sub Category Successfully Add');</script>";
 } else{
 	echo "error";
 }
@@ -48,6 +48,7 @@ if (isset($_POST['add_product'])) {
 	$ProPrice = $_POST['proprice'];
 	$description = $_POST['description'];
 
+
 	move_uploaded_file($ProImgOne_tmp,"../img/$ProImgOne");
 	move_uploaded_file($ProImgTwo_tmp,"../img/$ProImgTwo");
 	move_uploaded_file($ProImgTree_tmp,"../img/$ProImgTree");
@@ -60,9 +61,10 @@ if (isset($_POST['add_product'])) {
 				alert('Successfully Added!');
 				window.location.href='../user_profile.php';
 				</script>";
+
 		# code...
 	}else{
-		echo "error";
+		echo "<script>window.open('create_product.php','_self')alert('product failed to execute')</script>";
 	}
 
 

@@ -120,6 +120,7 @@ session_start();
                   Dropdown
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <a href="admin.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Users Table <span class="badge"></span></a>
                   <a class="dropdown-item" href="main_category.php">Add Category</a><br>
                   <a class="dropdown-item" href="sub_category.php">Sub Category</a><br>
                   <a class="dropdown-item" href="create_product.php">create product</a><br>
@@ -147,7 +148,7 @@ session_start();
     <!-- Add Page -->
     <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content"> 
       <form>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

@@ -45,6 +45,7 @@ global $connect;
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 
 	<link rel="stylesheet" type="text/css" href="assets/css/login_css.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- 	<link rel="stylesheet" type="text/css" href="admin/css/moded.css"> -->
 
@@ -67,7 +68,7 @@ global $connect;
 				<div class="pull-left">
 					<!-- Logo -->
 					<div class="header-logo">
-						<a class="logo" href="#">
+						<a class="logo" href="index.php">
 							<img src="./img/logo1.png" alt="" style="width:200px;height:120px;">
 						</a>
 					</div>
@@ -75,14 +76,14 @@ global $connect;
 
 					<!-- Search -->
 					<div class="header-search">
-						<form action="search.php" method="POST">
-							<input class="input search-input" type="text" placeholder="Enter your keyword">
+						<form action="function/search.php" method="get">
+							<input class="input search-input" name="searchall" type="text" placeholder="Enter your keyword">
 							<select class="input search-categories">
 								<option value="0">All Categories</option>
 								<option value="1">Category 01</option>
 								<option value="1">Category 02</option>
 							</select>
-							<button class="search-btn"><i class="fa fa-search"></i></button>
+							<button class="search-btn" name="search"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
 					<!-- /Search -->
@@ -129,47 +130,6 @@ global $connect;
 						<!-- /Account -->
 
 						<!-- Cart -->
-						<li class="header-cart dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-								<div class="header-btns-icon">
-									<i class="fa fa-shopping-cart"></i>
-									<span class="qty"><?php echo $count; ?></span>
-								</div>
-								<strong class="text-uppercase">My Cart:</strong>
-								<br>
-								<span>35.20$</span>
-							</a>	
-							<div class="custom-menu">
-								<div id="shopping-cart">
-									<div class="shopping-cart-list">
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="./img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="./img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-									</div>
-									<div class="shopping-cart-btns">
-										<button class="main-btn">View Cart</button>
-										<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
-									</div>
-								</div>
-							</div>
-						</li>
 						<!-- /Cart -->
 
 						<!-- Mobile nav toggle-->
@@ -196,16 +156,15 @@ global $connect;
 					<span class="category-header">Categories <i class="fa fa-list"></i></span>
 					<ul class="category-list">
 						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Organic</a>
+							<a href="product-page/products.php?cat_id=24" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Fertilizer</a>
 						</li>
-						<li><a href="#">Vegetables</a></li>
-						<li><a href="#">Fruits</a></li>
-						<li><a href="#">Livestocks</a></li>
-						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Poultry </a>
+						<li><a href="product-page/products.php?cat_id=19">Vegetables</a></li>
+						<li><a href="product-page/products.php?cat_id=20">Fruits</a></li>
+						<li><a href="product-page/products.php?cat_id=18">Livestocks</a></li>
+						<li><a href="product-page/products.php?cat_id=17">Poultry </a>
 						</li>
-						<li><a href="#">Rice</a></li>
-						<li><a href="#">View All</a></li>
+						<li><a href="product-page/products.php?cat_id=29">Rice</a></li>
+						<li><a href="product-page/products.php?cat_id=23">Beans</a></li>
 					</ul>
 				</div>
 				<!-- /category nav -->
@@ -215,7 +174,7 @@ global $connect;
 					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 					<ul class="menu-list">
 						<li><a href="#">Home</a></li>
-						<li><a href="#">Shop</a></li>
+						<!-- <li><a href="#">Shop</a></li>
 						<li><a href="#">Sales</a></li>
 						<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
 							<ul class="custom-menu">
@@ -224,7 +183,7 @@ global $connect;
 								<li><a href="product-page.html">Product Details</a></li>
 							</ul>
 						</li>
-					</ul>
+			 -->		</ul>
 				</div>
 				<!-- menu nav -->
 			</div>
@@ -368,9 +327,6 @@ global $connect;
 									<div class='product-label'>
 									</div>
 									<ul class='product-countdown'>
-										<li><span>00 H</span></li>
-										<li><span>00 M</span></li>
-										<li><span>00 S</span></li>
 									</ul>
 									<a href='product-page/product-page.php?prodetails=".$poultry->pro_id."'>
 									<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
@@ -379,17 +335,10 @@ global $connect;
 								<div class='product-body'>
 									<h3 class='product-price'>P".$poultry->pro_price." 
 									<div class='product-rating'>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star-o empty'></i>
+									
 									</div>
 									<h2 class='product-name'><a href='#'>".$poultry->pro_name."</a></h2>
 									<div class='product-btns'>
-										<form method='post' action='cart.php'>
-										<input type='hidden' name='proid' value='".$poultry->pro_id."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 									</div>
 								</div>
 							</div>";
@@ -453,17 +402,10 @@ global $connect;
 						<div class='product-body'>
 							<h3 class='product-price'><b>P</b>".$show->pro_price."</h3>
 							<div class='product-rating'>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star-o empty'></i>
+
 							</div>
 							<h2 class='product-name'><a href='#'>".$show->pro_name."</a></h2>
 							<div class='product-btns'>
-										<form method='post' action='cart.php'>
-										<input type='hidden' name='proid' value='".$show->pro_id."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 							</div>
 						</div>
 					</div>
@@ -567,17 +509,10 @@ global $connect;
 						<div class='product-body'>
 							<h3 class='product-price'>P".$veges->pro_price."</h3>
 							<div class='product-rating'>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star-o empty'></i>
 							</div>
 							<h2 class='product-name'><a href='#'>".$veges->pro_name."</a></h2>
 							<div class='product-btns'>
-								<form method='post' action='cart.php'>
-									<input type='hidden' name='proid' value='".$veges->pro_id."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
+
 							</div>
 						</div>
 					</div>
@@ -616,17 +551,9 @@ global $connect;
 						<div class='product-body'>
 							<h3 class='product-price'><b>P</b>".$fruits->pro_price."</h3>
 							<div class='product-rating'>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star-o empty'></i>
 							</div>
 							<h2 class='product-name'><a href='#'>".$fruits->pro_name."</a></h2>
 							<div class='product-btns'>
-									<form method='post' action='cart.php'>
-									<input type='hidden' name='proid' value='".$fruits->pro_id."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 							</div>
 						</div>
 					</div>
@@ -655,7 +582,7 @@ global $connect;
 					<div class="footer">
 						<!-- footer logo -->
 						<div class="footer-logo">
-							<a class="logo" href="#">
+							<a class="logo" href="index.php">
 		            <img src="./img/logo1.png" alt="" class="logosize">
 		          </a>
 						</div>

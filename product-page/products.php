@@ -3,7 +3,7 @@ session_start();
 include "../connect/connection.php";
 include "../function/class_productdetails.php";
 $details = new ViewProductDetails;
-$AllProducts = $details->DisplayAllProducts();
+$AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 ?>
 
 <!DOCTYPE html>	
@@ -313,12 +313,12 @@ $AllProducts = $details->DisplayAllProducts();
 									<div class='product-thumb'>
 										<div class='product-label'>
 										</div>
-										<a href='product-page.php?prodetails=".$result->pro_id."'>
+										<a href='product-page.php?prodetails=".$result['pro_id']."'>
 										<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
-										<img src='../img/".$result->pro_img1."' alt='' class='img-size'>
+										<img src='../img/".$result['pro_img1']."' alt='' class='img-size'>
 									</div>
 									<div class='product-body'>
-										<h3 class='product-price'>".$result->pro_price."<del class='product-old-price'>$45.00</del></h3>
+										<h3 class='product-price'>".$result['pro_price']."<del class='product-old-price'>$45.00</del></h3>
 										<div class='product-rating'>
 											<i class='fa fa-star'></i>
 											<i class='fa fa-star'></i>
@@ -326,10 +326,10 @@ $AllProducts = $details->DisplayAllProducts();
 											<i class='fa fa-star'></i>
 											<i class='fa fa-star-o empty'></i>
 										</div>
-										<h2 class='product-name'><a href='#'>".$result->pro_name."</a></h2>
+										<h2 class='product-name'><a href='#'>".$result['pro_name']."</a></h2>
 										<div class='product-btns'>
 											<form method='post' action='../cart.php' class='form_align'>
-										<input type='hidden' name='proid' value='".$result->pro_id."'></>
+										<input type='hidden' name='proid' value='".$result['pro_id']."'></>
 										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 										</div>
 									</div>
