@@ -24,9 +24,21 @@ if (isset($_POST['login'])) {
 			$stmt2 = $connect->prepare("select * from users where username = :username");
 			$stmt2->bindValue(':username',$user);
 			$stmt2->execute();
-			$account2 = $stmt2->fetch(PDO::FETCH_OBJ);
+			$account2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+			$count = $stmt2->rowCount();
+					if($account2['password']==$password){
+						$_SESSION['login'] = $account2['users_id'];
+						header("Location:user_profile.php");
+						
+					}else{
+						echo "wrong details";
+					}
 			// $username = $_SESSION['login'];
-			echo "<script>window.open('index.php','_self');alert('succesfuly login');</script>";
+
+			// $_SESSION['login'] = $account2->users_id;
+			// $_SESSION['user_logged_in'] = $account2->username;
+						echo "<script>window.open('index.php','_self');alert('succesfuly login');</script>";
+
 		}
 		# code...
 	}

@@ -213,7 +213,7 @@ $viewDetails = $details->AllProductDetails($_GET['prodetails']);
 									
 								</div>
 								<p><strong>Availability:</strong><?php echo $viewDetails->availability; ?></p>
-								<p><p> </p></p>
+
 								<div class="product-options">
 
 
@@ -256,6 +256,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'error') {
 								</ul>
 								<div class="tab-content">
 									<div id="tab1" class="tab-pane fade in active">
+
 										<p><?php echo $viewDetails->description; ?></p>
 									</div>
 									<div id="tab2" class="tab-pane fade in">

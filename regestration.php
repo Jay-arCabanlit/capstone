@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
 	$Govtypeid = $_POST['govtypeid'];
 	$GovIdNumber = $_POST['idnumber'];
 
+
 	$userImg = $_FILES['userImg'] ['name'];
 			$userImg_tmp = $_FILES['userImg'] ['tmp_name'];
 
