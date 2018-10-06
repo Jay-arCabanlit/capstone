@@ -556,9 +556,7 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									      <div class="col-sm-4">
 									        <p class="form-control" id="add"><?php echo $user_info->Address; ?></p>
 									      </div>
-									      <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal">
-									      	<span class="fa fa-edit"></span>
-									      </button>
+									      <button title="Update" name="update" data-id="<?php echo $user_info->users_id;?>" class="btn btn-success btn-md update glyphicon glyphicon-edit" data-toggle="modal" data-target="#updateModal"></button>
 									    </div>
 									  </form>
 									</div>
@@ -857,25 +855,30 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 	  </div>
 <!-- END -->
 <!-- UPDATE MODAL -->
-<div id="updateModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<div class="modal fade" id="updateModal" role="dialog">
+	    <div class="modal-dialog modal-lg">
+				<form class="" action="../functions/update.php" method="post">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">EDIT PROFILE</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
 
-  </div>
-</div>
+	      <!-- Modal content-->
+	      <div class="modal-content form-group" >
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title" align="center">Update Details</h4>
+	        </div>
+	        <div class="modal-body" id="updatemodalview">
+	          <p id = "test" align="center">Some text in the modal.</p>
+						HELLO
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary" name="update">Save Changes</button>
+					</form>
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
 <!-- END -->
 	<!-- jQuery Plugins -->
 	<script src="js/jquery.min.js"></script>
