@@ -1,6 +1,6 @@
 <html>
 
-<form action="/function/sms.php" method="POST">
+<form action="function/sms.php" method="POST">
 
 
 	

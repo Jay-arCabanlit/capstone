@@ -45,6 +45,7 @@ global $connect;
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 
 	<link rel="stylesheet" type="text/css" href="assets/css/login_css.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- 	<link rel="stylesheet" type="text/css" href="admin/css/moded.css"> -->
 
@@ -75,14 +76,14 @@ global $connect;
 
 					<!-- Search -->
 					<div class="header-search">
-						<form action="search.php" method="POST">
-							<input class="input search-input" type="text" placeholder="Enter your keyword">
+						<form action="function/search.php" method="get">
+							<input class="input search-input" name="searchall" type="text" placeholder="Enter your keyword">
 							<select class="input search-categories">
 								<option value="0">All Categories</option>
 								<option value="1">Category 01</option>
 								<option value="1">Category 02</option>
 							</select>
-							<button class="search-btn"><i class="fa fa-search"></i></button>
+							<button class="search-btn" name="search"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
 					<!-- /Search -->
@@ -176,7 +177,7 @@ global $connect;
 					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 					<ul class="menu-list">
 						<li><a href="#">Home</a></li>
-						<li><a href="#">Shop</a></li>
+						<!-- <li><a href="#">Shop</a></li>
 						<li><a href="#">Sales</a></li>
 						<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
 							<ul class="custom-menu">
@@ -185,7 +186,7 @@ global $connect;
 								<li><a href="product-page.html">Product Details</a></li>
 							</ul>
 						</li>
-					</ul>
+			 -->		</ul>
 				</div>
 				<!-- menu nav -->
 			</div>
@@ -329,9 +330,6 @@ global $connect;
 									<div class='product-label'>
 									</div>
 									<ul class='product-countdown'>
-										<li><span>00 H</span></li>
-										<li><span>00 M</span></li>
-										<li><span>00 S</span></li>
 									</ul>
 									<a href='product-page/product-page.php?prodetails=".$poultry->pro_id."'>
 									<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
@@ -340,11 +338,7 @@ global $connect;
 								<div class='product-body'>
 									<h3 class='product-price'>P".$poultry->pro_price." 
 									<div class='product-rating'>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star-o empty'></i>
+									
 									</div>
 									<h2 class='product-name'><a href='#'>".$poultry->pro_name."</a></h2>
 									<div class='product-btns'>
@@ -411,11 +405,7 @@ global $connect;
 						<div class='product-body'>
 							<h3 class='product-price'><b>P</b>".$show->pro_price."</h3>
 							<div class='product-rating'>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star-o empty'></i>
+
 							</div>
 							<h2 class='product-name'><a href='#'>".$show->pro_name."</a></h2>
 							<div class='product-btns'>
@@ -522,11 +512,6 @@ global $connect;
 						<div class='product-body'>
 							<h3 class='product-price'>P".$veges->pro_price."</h3>
 							<div class='product-rating'>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star-o empty'></i>
 							</div>
 							<h2 class='product-name'><a href='#'>".$veges->pro_name."</a></h2>
 							<div class='product-btns'>
@@ -569,11 +554,6 @@ global $connect;
 						<div class='product-body'>
 							<h3 class='product-price'><b>P</b>".$fruits->pro_price."</h3>
 							<div class='product-rating'>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star'></i>
-								<i class='fa fa-star-o empty'></i>
 							</div>
 							<h2 class='product-name'><a href='#'>".$fruits->pro_name."</a></h2>
 							<div class='product-btns'>

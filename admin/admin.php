@@ -16,6 +16,7 @@ $usersInfo = $usersdetails->AllUsers();
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/moded.css">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
@@ -29,14 +30,14 @@ $usersInfo = $usersdetails->AllUsers();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AdminStrap</a>
+          <a class="navbar-brand" href="#">Admin</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Dashboard</a></li>
-            <li><a href="pages.html">Users Table</a></li>
-            <li><a href="posts.html">Posts</a></li>
-            <li><a href="users.html">Users</a></li>
+            <li class="active"><a href="">Users Table</a></li>
+            <li><a href="index.html">Product List</a></li>
+            <li><a href="pages.html">Main Categor</a></li>
+            <li><a href="posts.html">Subcategory</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, Brad</a></li>
@@ -53,15 +54,7 @@ $usersInfo = $usersdetails->AllUsers();
             <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>ADMIN<small></small></h1>
           </div>
           <div class="col-md-2">
-            <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Create Content
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Add Page</a></li>
-                <li><a href="#">Add Post</a></li>
-                <li><a href="#">Add User</a></li>
+            <div class="dropdown create"></a></li>
               </ul>
             </div>
           </div>
@@ -71,9 +64,6 @@ $usersInfo = $usersdetails->AllUsers();
 
     <section id="breadcrumb">
       <div class="container">
-        <ol class="breadcrumb">
-          <li class="active">Dashboard</li>
-        </ol>
       </div>
     </section>
 
@@ -85,58 +75,22 @@ $usersInfo = $usersdetails->AllUsers();
               <a href="index.html" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Users Table <span class="badge">12</span></a>
-              <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-inbox" aria-hidden="true">&nbsp;</span>product list<span class="badge">33</span></a>
-              <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge">203</span></a>
-              <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge">203</span></a>
-              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge">203</span></a>
-
+              <a href="admin.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Users Table <span class="badge"></span></a>
+              <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>product list<span class="badge"></span></a>
+              <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge"></span></a>
+              <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge"></span></a>
+              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge"></span></a>
             </div>
-
           </div>
+
           <div class="col-md-9">
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Website Overview</h3>
+                <h3 class="panel-title">Users Table</h3>
               </div>
-              <div class="panel-body">
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 203</h2>
-                    <h4>Users</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 12</h2>
-                    <h4>Pages</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 33</h2>
-                    <h4>Posts</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 12,334</h2>
-                    <h4>Visitors</h4>
-                  </div>
-                </div>
-              </div>
-              </div>
-
-              <!-- Latest Users -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Latest Users</h3>
-                </div>
-                <div class="panel-body">
-                  <?php foreach ($usersInfo as $d): ?>
-              
-                  <table class="table table-striped table-hover">
+              <div class="panel-body" style="overflow-x:auto;">
+                  <table class="table able-hover table-bordered table-condense">
                       <tr>
                         <th>Users Name</th>
                         <th>First Name</th>
@@ -145,18 +99,23 @@ $usersInfo = $usersdetails->AllUsers();
                         <th>Id Number</th>
                         <th>ID</th>
                       </tr>
+                    <?php foreach ($usersInfo as $d): ?>
                       <tr>
                         <td><?php echo $d['username']; ?></td>
                         <td><?php echo $d['Fname']; ?></td>
                         <td><?php echo $d['Lname']; ?></td>
                         <td><?php echo $d['id_type']; ?></td>
                         <td><?php echo $d['id_number']; ?></td>
-                        <td><?php echo $d['users_img']; ?></td>
+                        <td><img src="../users_img/<?php echo $d['users_img']; ?>" class="img-size"></td>
                       </tr>
+                    <?php endforeach ?>
                     </table>
-                     <?php endforeach ?>
-                </div>
+               
               </div>
+              </div>
+
+              <!-- Latest Users -->
+
           </div>
         </div>
       </div>

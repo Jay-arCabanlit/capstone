@@ -14,6 +14,7 @@ global $connect;
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="assets/js/reg_js.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 </head>
@@ -69,6 +70,7 @@ global $connect;
 					<div class="form-group">
 						<input type="text" name="idnumber" id="password_confirmation" class="form-control input-lg" placeholder="ID Number" tabindex="6" required>
 						<br>
+						<label>Upload your valid Id here!</label>
 						   <input class="form-control" name="userImg" type="file" placeholder="Select product image5">
 						<br>	
 				</div>

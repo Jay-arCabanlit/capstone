@@ -3,7 +3,7 @@
 	include "../connect/connection.php";
 	include "../function/class_productdetails.php";
 	$details = new ViewProductDetails;
-	$viewDetails = $details->AllProductDetails($_GET['prodetails']);
+$viewDetails = $details->AllProductDetails($_GET['prodetails']);
 
 // var_dump($viewDetails);
 // die();
@@ -88,14 +88,11 @@
 									</div>
 									<strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
 								</div>
-								<a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+								<a href="../regestration_form.php" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
 								<ul class="custom-menu">
 									<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-									<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-									<li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
-									<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
 									<li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-									<li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+									<li><a href="../regestration_form.php"><i class="fa fa-user-plus"></i> Create An Account</a></li>
 								</ul>
 							</li>
 							<!-- /Account -->
@@ -126,20 +123,14 @@
 					<div class="category-nav show-on-click">
 						<span class="category-header">Categories <i class="fa fa-list"></i></span>
 						<ul class="category-list">
-							<li class="dropdown side-dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Organic	</i></a>
-								<div class="custom-menu">
-								</div>
-							</li>
-							<li><a href="#">Vegetable</a></li>
-							<li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Fruits</a>
-							</li>
-							<li><a href="#">livestoks</a></li>
-							<li><a href="#">Poultry</a></li>
-							<li class="dropdown side-dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Rice</a>
-							</li>
-							<li><a href="#">View All</a></li>
+						<li><a href="products.php?cat_id=24">Fertilizer</a></li>
+						<li><a href="products.php?cat_id=19">Vegetables</a></li>
+						<li><a href="products.php?cat_id=20">Fruits</a></li>
+						<li><a href="products.php?cat_id=18">Livestocks</a></li>
+						<li><a href="products.php?cat_id=17">Poultry </a>
+						</li>
+						<li><a href="products.php?cat_id=29">Rice</a></li>
+						<li><a href="products.php?cat_id=23">Beans</a></li>
 						</ul>
 					</div>
 					<!-- /category nav -->
@@ -149,7 +140,7 @@
 						<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 						<ul class="menu-list">
 							<li><a href="#">Home</a></li>
-							<li><a href="#">Shop</a></li>
+							<!-- <li><a href="#">Shop</a></li>
 							<li><a href="#">Sales</a></li>
 							<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
 								<ul class="custom-menu">
@@ -158,7 +149,7 @@
 									<li><a href="product-page.html">Product Details</a></li>
 									<li><a href="checkout.html">Checkout</a></li>
 								</ul>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					<!-- menu nav -->
@@ -172,10 +163,9 @@
 		<div id="breadcrumb">
 			<div class="container">
 				<ul class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Products</a></li>
-					<li><a href="#">Category</a></li>
-					<li class="active">Product Name Goes Here</li>
+					<li><a href="../index.php">Home</a></li>
+					<li><a href="#">Products Page</a></li>
+					<li class="active"><?php echo $viewDetails->pro_name; ?></li>
 				</ul>
 			</div>
 		</div>
@@ -232,13 +222,27 @@
 								<div class="product-btns">
 
 									<div class="">
-									<form method="POST" action="">
+
+									<form action="../function/sms.php" method="POST">
+									<input type="hidden" name="number" value="639507550261">
 									<div class="form-group">
-									<textarea class="input" placeholder="Hi, I'm interested in this. Is it available?" name="review"></textarea>
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Send to Seller</button>
+									<textarea class="input" placeholder="Hi, I'm interested in this. Is it available?" name="message"></textarea>
+								<button name="sms" type="submit"class="primary-btn add-to-cart"><i class="fa fa-shopping-cart" ></i> Send to Seller</button>
 
 													</div>
 									</form>
+
+<?php 
+
+if(isset($_GET['status']) && $_GET['status'] != 'error') {
+	echo '<h1>'.$_GET['status'].'</h1>';
+} 
+
+if(isset($_GET['status']) && $_GET['status'] == 'error') {
+	echo '<h1 style="color:red">'.$_GET['message'].'</h1>';
+}
+
+?>
 									</div>
 								</div>
 							</div>
@@ -257,7 +261,7 @@
 									<div id="tab2" class="tab-pane fade in">
 
 										<div class="row">
-											<div class="col-md-6">
+											<div class="col-md-6">	
 												<div class="product-reviews">
 								<?php
 										foreach ($viewDetails->productreview as $review) {
@@ -368,11 +372,6 @@
 							<div class='product-body'>
 								<h3 class='product-price'><b>P</b>".$relatedview['pro_price']."</h3>
 								<div class='product-rating'>
-									<i class='fa fa-star'></i>
-									<i class='fa fa-star'></i>
-									<i class='fa fa-star'></i>
-									<i class='fa fa-star'></i>
-									<i class='fa fa-star-o empty'></i>
 								</div>
 								<h2 class='product-name'><a href='#'>".$relatedview['pro_name']."</a></h2>
 								<div class='product-btns'>
