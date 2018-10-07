@@ -224,7 +224,7 @@ $viewDetails = $details->AllProductDetails($_GET['prodetails']);
 									<div class="">
 
 									<form action="../function/sms.php" method="POST">
-									<input type="hidden" name="number" value="639507550261">
+									<input type="hidden" name="number" value="<?php echo $viewDetails->user->phone; ?>">
 									<div class="form-group">
 									<textarea class="input" placeholder="Hi, I'm interested in this. Is it available?" name="message"></textarea>
 								<button name="sms" type="submit"class="primary-btn add-to-cart"><i class="fa fa-shopping-cart" ></i> Send to Seller</button>

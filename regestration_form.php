@@ -75,16 +75,22 @@ global $connect;
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-
-						<input type="text" name="idnumber" id="password_confirmation" class="form-control input-lg" placeholder="ID Number" tabindex="6" required>
-						<br>
-						<label>Upload your valid Id here!</label>
-						   <input class="form-control" name="userImg" type="file" placeholder="Select product image5">
-						<br>	
-				</div>
-				<br>	
-
+						<input type="text" name="idnumber" id="password_confirmation" class="form-control input-lg" placeholder="ID Number"  required>
+				</div>	
 			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+							<label>Upload your valid Id here!</label>
+						   <input class="form-control input-lg" name="userImg" type="file" placeholder="Select product image5">			
+				</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<div class="form-group">
+							<label>Your Phone Number</label>
+							<input type="text" name="phonenumber"class="form-control input-lg" placeholder="63912345678">
+						</div>
+					</div>
+				</div>
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-md-6"><input type="submit" name="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
