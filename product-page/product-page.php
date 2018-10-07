@@ -40,6 +40,7 @@ $viewDetails = $details->AllProductDetails($_GET['prodetails']);
 
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="../css/style.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/login_css.css">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -88,7 +89,25 @@ $viewDetails = $details->AllProductDetails($_GET['prodetails']);
 									</div>
 									<strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
 								</div>
-								<a href="../regestration_form.php" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+								<a a href="#" class="text-uppercase" data-toggle="modal" data-target="#login-modal">Login</a> / <a href="#" class="text-uppercase">Join</a>
+							<form method="post" action="../login.php">
+							<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  		<div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form>
+					<input type="text" name="username" placeholder="Username">
+					<input type="password" name="password" placeholder="Password">
+					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+				  </form>
+					
+				  <div class="login-help">
+					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
+		  </form>
 								<ul class="custom-menu">
 									<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
 									<li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
@@ -251,7 +270,6 @@ if(isset($_GET['status']) && $_GET['status'] == 'error') {
 							<div class="product-tab">
 								<ul class="tab-nav">
 									<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-									<li><a data-toggle="tab" href="#tab1">Details</a></li>
 									<li><a data-toggle="tab" href="#tab2">Reviews</a></li>
 								</ul>
 								<div class="tab-content">
@@ -273,10 +291,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'error') {
 															<div><a href='#'><i class='fa fa-clock-o'></i>".$review['review_added_date']."</a></div>
 															<div class='review-rating pull-right'>
 																<i class='fa fa-star'></i>
-																<i class='fa fa-star'></i>
-																<i class='fa fa-star'></i>
-																<i class='fa fa-star'></i>
-																<i class='fa fa-star-o empty'></i>
+
 															</div>
 														</div>
 														<div class='review-body'>
@@ -317,10 +332,10 @@ if(isset($_GET['status']) && $_GET['status'] == 'error') {
 															<strong class="text-uppercase">Your Rating: </strong>
 															<div class="stars">
 																<input type="radio" id="star5" name="ratings" value="5" /><label for="star5"></label>
-																<input type="radio" id="star4" name="ratings" value="4" /><label for="star4"></label>
+<!-- 																<input type="radio" id="star4" name="ratings" value="4" /><label for="star4"></label>
 																<input type="radio" id="star3" name="ratings" value="3" /><label for="star3"></label>
 																<input type="radio" id="star2" name="ratings" value="2" /><label for="star2"></label>
-																<input type="radio" id="star1" name="ratings" value="1" /><label for="star1"></label>
+																<input type="radio" id="star1" name="ratings" value="1" /><label for="star1"></label> -->
 															</div>
 														</div>
 													</div>
