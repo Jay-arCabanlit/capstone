@@ -3,19 +3,14 @@ include "../connect/connection.php";
 
 class search {
 
-	function SearchProducts(){
+	function SearchProducts($search){
 		global $connect;
 
-		if (isset($_GET['search'])) {
-			# code...
-			$GetSearch = $_GET['searchall'];
-
-			$query = $connect->prepare("SELECT * FROM products where pro_name like '%$GetSearch%'");
-			$query->execute();
+			$query = $connect->prepare("SELECT * FROM products where pro_name like ?");
+			$query->bind_param(1,"%$search%");
 			$result = $query->fetchAll(PDO::FETCH_OBJ);
+			$query->execute();
 			return $result;
-
-			echo "$result";
 		}
 	}
 }

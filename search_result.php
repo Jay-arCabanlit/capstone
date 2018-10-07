@@ -3,7 +3,7 @@ session_start();
 include "connect/connection.php";
 include "function/search-input.php";
 $details = new search;
-$AllProducts = $details->SearchProducts();
+$AllProducts = $details->SearchProducts($_GET['search']);
 ?>
 
 <!DOCTYPE html>	
