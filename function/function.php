@@ -1,5 +1,6 @@
 <?php 
 include "connect/connection.php";
+
 class users {
 	//login
 	function getdata($user, $password){
@@ -63,6 +64,14 @@ class CRUD{
 		$results = $query->fetch(PDO::FETCH_OBJ);
 		return $results;
 	}
+	function getproduct_by_id($id){
+	$db = connect();
+	$sth = $db->prepare("SELECT * From products WHERE pro_id = :id");
+	$sth->bindValue('id',$id);
+	$sth->execute();
+	$results = $sth->fetch(PDO::FETCH_OBJ);
+	return $results;
+		}
 }
 
 

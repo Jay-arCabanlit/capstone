@@ -588,7 +588,8 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									        	<button class="btn btn-xs btn-danger">
 									        		<span class="fa fa-trash"></span>
 									        	</button>
-									        	</a>
+									        	</a>|
+									        	<button title="Update" name="update" data-id="<?php echo $product['pro_id'];?>" class="btn btn-success btn-md update glyphicon glyphicon-edit" data-toggle="modal" data-target="#updateModal"></button>
 									        </td>
 									      </tr>
 									  	<?php endforeach; ?>
@@ -857,7 +858,7 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 <!-- UPDATE MODAL -->
 <div class="modal fade" id="updateModal" role="dialog">
 	    <div class="modal-dialog modal-lg">
-				<form class="" action="../functions/update.php" method="post">
+				<form class="" action="function/insert.php" method="post">
 
 
 	      <!-- Modal content-->
@@ -889,5 +890,22 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 	<script src="js/main.js"></script>
 
 </body>
+<script type="text/javascript">
+	$(document).on('click', '.update', function(){
+	           var id = $(this).data("id");
 
+	           if(id != '')
+	           {
+	                $.ajax({
+	                     url:"function/fetch.php",
+	                     method:"POST",
+	                     data:{update:id},
+	                     success:function(data){
+	                          $('#updatemodalview').html(data);
+	                          $('#updateModal').modal('show');
+	                     }
+	                });
+	           }
+	      });
+</script>
 </html>
