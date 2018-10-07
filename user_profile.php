@@ -224,8 +224,10 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									        	<button class="btn btn-xs btn-danger">
 									        		<span class="fa fa-trash"></span>
 									        	</button>
-									        	</a>
+									        	</a>|
+									        	<button title="Update" name="update" data-id="<?php echo $product['pro_id']?>" class="btn btn-success btn-md update glyphicon glyphicon-edit" data-toggle="modal" data-target="#updateModal"></button>
 									        </td>
+
 									      </tr>
 									  	<?php endforeach; ?>
 									    </tbody>
@@ -490,7 +492,32 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 	    </div>
 	  </div>
 <!-- END -->
+<!-- UPDATE MODAL -->
+<!-- UPDATE MODAL -->
+	<div class="modal fade" id="updateModal" role="dialog">
+	    <div class="modal-dialog modal-md">
+		<form class="" action="function/insert.php" method="POST">
 
+
+	      <!-- Modal content-->
+	      <div class="modal-content form-group" >
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title" align="center">Update Details</h4>
+	        </div>
+	        <div class="modal-body" id="updatemodalview">
+	          <p id = "test" align="center">Some text in the modal.</p>
+						HELLO
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary" name="update">Save Changes</button>
+					</form>
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
 <!-- END -->
 	<!-- jQuery Plugins -->
 	<script src="js/jquery.min.js"></script>
@@ -501,5 +528,23 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 	<script src="js/main.js"></script>
 
 </body>
-
+<script type="text/javascript">
+	//modal update script
+	$(document).on('click', '.update', function(){
+	           var id = $(this).data("id");
+	           console.log(id);
+	           if(id != '')
+	           {
+	                $.ajax({
+	                     url:"function/fetch.php",
+	                     method:"POST",
+	                     data:{update:id},
+	                     success:function(data){
+	                          $('#updatemodalview').html(data);
+	                          $('#updateModal').modal('show');
+	                     }
+	                });
+	           }
+	      });
+</script>
 </html>

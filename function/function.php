@@ -1,5 +1,5 @@
 <?php 
-include "connect/connection.php";
+// include "connect/connection.php";
 class users {
 	//login
 	function getdata($user, $password){
@@ -62,6 +62,15 @@ class CRUD{
 		$query->execute();
 		$results = $query->fetch(PDO::FETCH_OBJ);
 		return $results;
+	}
+	function getproduct_by_id($id){
+		global $connect;
+		$query = $connect->prepare("SELECT * FROM products WHERE pro_id = :id");
+		$query->bindValue('id',$id);
+		$query->execute();
+		$results = $query->fetch(PDO::FETCH_OBJ);
+		return $results;
+
 	}
 }
 
