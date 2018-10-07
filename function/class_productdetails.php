@@ -19,6 +19,11 @@ global $connect;
   $sth3->bindParam(1,$results->pro_id);
   $sth3->execute();
   $results->productreview = $sth3->fetchAll(PDO::FETCH_ASSOC);
+
+  $sth4 = $connect->prepare("SELECT * FROM users where users_id = ?");
+  $sth4->bindParam(1,$results->users_id);
+  $sth4->execute();
+  $results->user = $sth4->fetch(PDO::FETCH_OBJ);
   return $results;
 
 
