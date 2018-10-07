@@ -48,6 +48,36 @@ $viewDetails = $details->AllProductDetails($_GET['prodetails']);
 			  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 			  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 			<![endif]-->
+			<style type="text/css">
+				.stars-outer {
+  position: relative;
+  display: inline-block;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #ccc;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #f8ce0b;
+}
+
+			</style>
 
 	</head>
 
@@ -290,7 +320,6 @@ if(isset($_GET['status']) && $_GET['status'] == 'error') {
 															<div><a href='#'><i class='fa fa-user-o'></i>".$review['users_name']."</a></div>
 															<div><a href='#'><i class='fa fa-clock-o'></i>".$review['review_added_date']."</a></div>
 															<div class='review-rating pull-right'>
-																<i class='fa fa-star'></i>
 
 															</div>
 														</div>
@@ -332,10 +361,10 @@ if(isset($_GET['status']) && $_GET['status'] == 'error') {
 															<strong class="text-uppercase">Your Rating: </strong>
 															<div class="stars">
 																<input type="radio" id="star5" name="ratings" value="5" /><label for="star5"></label>
-<!-- 																<input type="radio" id="star4" name="ratings" value="4" /><label for="star4"></label>
+																<input type="radio" id="star4" name="ratings" value="4" /><label for="star4"></label>
 																<input type="radio" id="star3" name="ratings" value="3" /><label for="star3"></label>
 																<input type="radio" id="star2" name="ratings" value="2" /><label for="star2"></label>
-																<input type="radio" id="star1" name="ratings" value="1" /><label for="star1"></label> -->
+																<input type="radio" id="star1" name="ratings" value="1" /><label for="star1"></label>
 															</div>
 														</div>
 													</div>
@@ -514,6 +543,70 @@ if(isset($_GET['status']) && $_GET['status'] == 'error') {
 		<script src="../js/nouislider.min.js"></script>
 		<script src="../js/jquery.zoom.min.js"></script>
 		<script src="../js/main.js"></script>
+		<script type="text/javascript">
+			// Initial Ratings
+    const ratings = {
+      sony: 5,
+      samsung: 1.4,
+      vizio: 2.3,
+      panasonic: 3.6,
+      phillips: 4.1
+    }
+
+    // Total Stars
+    const starsTotal = 5;
+
+    // Run getRatings when DOM loads
+    document.addEventListener('DOMContentLoaded', getRatings);
+
+    // Form Elements
+    const productSelect = document.getElementById('product-select');
+    const ratingControl = document.getElementById('rating-control');
+
+    // Init product
+    let product;
+
+    // Product select change
+    productSelect.addEventListener('change', (e) => {
+      product = e.target.value;
+      // Enable rating control
+      ratingControl.disabled = false;
+      ratingControl.value = ratings[product];
+    });
+
+    // Rating control change
+    ratingControl.addEventListener('blur', (e) => {
+      const rating = e.target.value;
+
+      // Make sure 5 or under
+      if (rating > 5) {
+        alert('Please rate 1 - 5');
+        return;
+      }
+
+      // Change rating
+      ratings[product] = rating;
+
+      getRatings();
+    });
+
+    // Get ratings
+    function getRatings() {
+      for (let rating in ratings) {
+        // Get percentage
+        const starPercentage = (ratings[rating] / starsTotal) * 100;
+
+        // Round to nearest 10
+        const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+
+        // Set width of stars-inner to percentage
+        document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded;
+
+        // Add number rating
+        document.querySelector(`.${rating} .number-rating`).innerHTML = ratings[rating];
+      }
+    }
+		</script>>
 
 	</body>
 
