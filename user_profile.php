@@ -177,6 +177,12 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									        <p class="form-control" id="add"><?php echo $user_info->Address; ?></p>
 									      </div>
 									    </div>
+									    <!-- <button title="Update profile" name="update_profile" data-id="<?php echo $user_info->users_id?>" class="btn btn-xs btn-success update_profile" data-toggle="modal" data-target="#updateModal">
+									        		<span class="fa fa-edit"></span>
+									        	</button> -->
+									        	<button type="button" name="update_profile" data-id="<?php echo $user_info->users_id; ?>" class="btn btn-info btn-md update_profile" data-toggle="modal" data-target="#updateModalProfile">
+									        		<span class="fa fa-user-o">&nbsp;Edit Profile</span>
+									        	</button>
 									  </form>
 									</div>
 								</div>
@@ -207,8 +213,10 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									        	<button class="btn btn-xs btn-danger">
 									        		<span class="fa fa-trash"></span>
 									        	</button>
-									        	</a>|
-									        	<button title="Update" name="update" data-id="<?php echo $product['pro_id']?>" class="btn btn-success btn-md update glyphicon glyphicon-edit" data-toggle="modal" data-target="#updateModal"></button>
+									        	</a>
+									        	<button title="Update" name="update" data-id="<?php echo $product['pro_id']?>" class="btn btn-xs btn-success update" data-toggle="modal" data-target="#updateModal">
+									        		<span class="fa fa-edit"></span>
+									        	</button>
 									        </td>
 
 									      </tr>
@@ -475,7 +483,29 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 	    </div>
 	  </div>
 <!-- END -->
-<!-- UPDATE MODAL -->
+<!-- UPDATE MODAL PROFILE -->
+<div id="updateModalProfile" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+	<form class="" action="function/insert.php" method="POST">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body" id="updatemodalviewprofile">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="update_profile">Save Changes</button>
+      </div>
+  </form>
+    </div>
+
+  </div>
+ </div>
+
 <!-- UPDATE MODAL -->
 	<div class="modal fade" id="updateModal" role="dialog">
 	    <div class="modal-dialog modal-md">
@@ -525,6 +555,22 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 	                     success:function(data){
 	                          $('#updatemodalview').html(data);
 	                          $('#updateModal').modal('show');
+	                     }
+	                });
+	           }
+	      });
+	$(document).on('click', '.update_profile', function(){
+	           var id = $(this).data("id");
+	           console.log(id);
+	           if(id != '')
+	           {
+	                $.ajax({
+	                     url:"function/fetch_profile.php",
+	                     method:"POST",
+	                     data:{update:id},
+	                     success:function(data){
+	                          $('#updatemodalviewprofile').html(data);
+	                          $('#updateModalProfile').modal('show');
 	                     }
 	                });
 	           }

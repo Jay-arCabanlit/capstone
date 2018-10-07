@@ -72,6 +72,14 @@ class CRUD{
 		return $results;
 
 	}
+	function get_user_profile($id){
+		global $connect;
+		$query = $connect->prepare("SELECT * FROM users WHERE users_id = :id");
+		$query->bindValue('id',$id);
+		$query->execute();
+		$results = $query->fetch(PDO::FETCH_OBJ);
+		return $results;
+	}
 }
 
 
