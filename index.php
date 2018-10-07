@@ -176,7 +176,7 @@ global $connect;
 						<li><a href="#">Home</a></li>
 						<!-- <li><a href="#">Shop</a></li>
 						<li><a href="#">Sales</a></li>
-						<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
+						<li class="dropdowbn default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
 							<ul class="custom-menu">
 								<li><a href="index.html">Home</a></li>
 								<li><a href="products.html">Products</a></li>
@@ -439,10 +439,9 @@ global $connect;
 				<!-- banner -->
 				<div class="col-md-8">
 					<div class="banner banner-1">
-						<img src="./img/banner13.jpg" alt="">
+						<img src="./img/dako.png" alt="">
 						<div class="banner-caption text-center">
-							<h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
-							<button class="primary-btn">Buy Now</button>
+							<h1 class="primary-color"><br><span class="white-color font-weak"></span></h1>
 						</div>
 					</div>
 				</div>
