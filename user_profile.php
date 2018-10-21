@@ -36,7 +36,7 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>E-SHOP HTML Template</title>
+	<title>Online Agriculture Products</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
@@ -134,7 +134,6 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Personal Information</a></li>
 								<li><a data-toggle="tab" href="#tab2">Product Details</a></li>
-								<li><a data-toggle="tab" href="#tab3">Product Reviews</a></li>
 							</ul>
 							<div class="tab-content">
 								<div id="tab1" class="tab-pane fade in active">
@@ -183,7 +182,15 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									        	<button type="button" name="update_profile" data-id="<?php echo $user_info->users_id; ?>" class="btn btn-info btn-md update_profile" data-toggle="modal" data-target="#updateModalProfile">
 									        		<span class="fa fa-user-o">&nbsp;Edit Profile</span>
 									        	</button>
-									  </form>
+									  </form><br>
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="R4VCX4X3GBQS6">
+<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
 									</div>
 								</div>
 								<div id="tab2" class="tab-pane fade in">
@@ -193,10 +200,10 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									  <table class="table table-hover">
 									    <thead>
 									      <tr>
-									        <th>Product Name</th>
+									        <th>Farm Name</th>
 									        <th>Description</th>
-									        <th>Availability</th>
-									        <th>Price</th>
+<!-- 									        <th>Availability</th>
+									        <th>Price</th> -->
 									        <th>Action</th>
 									      </tr>
 									    </thead>
@@ -205,8 +212,6 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									      <tr>
 									        <td><?php echo $product['pro_name']; ?></td>
 									        <td><?php echo $product['description']; ?></td>
-									        <td><?php echo $product['availability']; ?></td>
-									        <td><?php echo $product['pro_price']; ?></td>
 									        <td>
 									        	<a href="user_profile.php?deleteid=<?php echo $product['pro_id'];?>
 											&action=delete" onclick="return confirm('Are you sure?')">
@@ -214,6 +219,7 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									        		<span class="fa fa-trash"></span>
 									        	</button>
 									        	</a>
+									        	<br> <br>
 									        	<button title="Update" name="update" data-id="<?php echo $product['pro_id']?>" class="btn btn-xs btn-success update" data-toggle="modal" data-target="#updateModal">
 									        		<span class="fa fa-edit"></span>
 									        	</button>
@@ -224,106 +230,6 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 									    </tbody>
 									  </table>
 									</div>
-								</div>
-								<div id="tab3" class="tab-pane fade in">
-
-									<div class="row">
-										<div class="col-md-6">
-											<div class="product-reviews">
-												<div class="single-review">
-													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-														<div class="review-rating pull-right">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-													</div>
-												</div>
-
-												<div class="single-review">
-													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-														<div class="review-rating pull-right">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-													</div>
-												</div>
-
-												<div class="single-review">
-													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-														<div class="review-rating pull-right">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-													</div>
-												</div>
-
-												<ul class="reviews-pages">
-													<li class="active">1</li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<h4 class="text-uppercase">Write Your Review</h4>
-											<p>Your email address will not be published.</p>
-											<form class="review-form">
-												<div class="form-group">
-													<input class="input" type="text" placeholder="Your Name" />
-												</div>
-												<div class="form-group">
-													<input class="input" type="email" placeholder="Email Address" />
-												</div>
-												<div class="form-group">
-													<textarea class="input" placeholder="Your review"></textarea>
-												</div>
-												<div class="form-group">
-													<div class="input-rating">
-														<strong class="text-uppercase">Your Rating: </strong>
-														<div class="stars">
-															<input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
-															<input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
-															<input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
-															<input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
-															<input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
-														</div>
-													</div>
-												</div>
-												<button class="primary-btn">Submit</button>
-											</form>
-										</div>
-									</div>
-
-
-
 								</div>
 							</div>
 						</div>
@@ -339,7 +245,6 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 	<!-- /section -->
 
 
-	<!-- FOOTER -->
 	<footer id="footer" class="section section-grey">
 		<!-- container -->
 		<div class="container">
@@ -351,12 +256,12 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 						<!-- footer logo -->
 						<div class="footer-logo">
 							<a class="logo" href="#">
-		            <img src="./img/logo.png" alt="">
+		            <img src="./img/logo2.png" alt="">
 		          </a>
 						</div>
 						<!-- /footer logo -->
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+						<p>PROMOTE THE DIFFERENT AGRICULTURAL FARMS THROUGH ONLINE AND TO SHOWCASE ALL FARMS IN MINDANAO</p>
 
 						<!-- footer social -->
 						<ul class="footer-social">
@@ -374,14 +279,14 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">My Account</h3>
+<!-- 						<h3 class="footer-header">My Account</h3>
 						<ul class="list-links">
 							<li><a href="#">My Account</a></li>
 							<li><a href="#">My Wishlist</a></li>
 							<li><a href="#">Compare</a></li>
 							<li><a href="#">Checkout</a></li>
 							<li><a href="#">Login</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<!-- /footer widget -->
@@ -391,13 +296,13 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Customer Service</h3>
+<!-- 						<h3 class="footer-header">Customer Service</h3>
 						<ul class="list-links">
 							<li><a href="#">About Us</a></li>
 							<li><a href="#">Shiping & Return</a></li>
 							<li><a href="#">Shiping Guide</a></li>
 							<li><a href="#">FAQ</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<!-- /footer widget -->
@@ -405,14 +310,19 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 				<!-- footer subscribe -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Stay Connected</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-						<form>
+						<h3 class="footer-header">Contact</h3>
+												<ul class="list-links">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">cabanlit7@gmail.com</a></li>
+							<li><a href="#">agritour</a></li>
+							<!-- <li><a href="#">FAQ</a></li> -->
+						</ul> 
+<!-- 						<form>
 							<div class="form-group">
 								<input class="input" placeholder="Enter Email Address">
 							</div>
 							<button class="primary-btn">Join Newslatter</button>
-						</form>
+						</form> -->
 					</div>
 				</div>
 				<!-- /footer subscribe -->
@@ -445,32 +355,35 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 	      <div class="modal-content">
 	        <div class="modal-header">	
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title">Add Products</h4>
+	          <h4 class="modal-title">Add Farm</h4>
 	        </div>
 	        <div class="modal-body">
 	          <form  action="admin/add_category.php" method="post" enctype="multipart/form-data">
-                          <input class="form-control" type="text" placeholder="Enter product name" name="proname"><br>
+                          <input class="form-control" type="text" placeholder="Farm Name" name="proname"><br>
+                          <label>Select Region</label><br>
                           <select class="custom-select" name="catid">
                             <?php foreach ($result as $d): ?>
                           <option value="<?php echo $d->cat_id; ?>"><?php echo $d->cat_name; ?></option>
                            <?php endforeach; ?>
                         </select>
-                          <select class="custom-select" name="subcat">
+                        <input type="hidden" name="subcat" value="1">
+                          <!-- <select class="custom-select" name="subcat">
                             <?php foreach ($view as $d): ?>
                           <option value="<?php echo $d->sub_cat_id; ?>"><?php echo $d->sub_cat_name; ?></option>
                            <?php endforeach; ?>
-                        </select><br>
+                        </select> --><br><br>
                           <input class="form-control" name="proimgone" type="file" placeholder="Select product image1"><br>
                           <input class="form-control" name="proimgtwo" type="file" placeholder="Select product image2"><br>
                           <input class="form-control" name="proimgtree" type="file" placeholder="Select product image3"><br>
                           <input class="form-control" name="proimgfour" type="file" placeholder="Select product image4"><br>
                           <input class="form-control" name="proimgfive" type="file" placeholder="Select product image5"><br>
-                          <select class="btn btn-secondary dropdown-toggle" name="AvailaBility" id="dropdownMenu1" >
+                          <input type="hidden" name="AvailaBility" value="1">
+                          <!-- <select class="btn btn-secondary dropdown-toggle" name="AvailaBility" id="dropdownMenu1" >
                           <option value="In Stock">In Stock</option>
                           <option value="To harvest">To Harvest</option>
-                          </select>
+                          </select> -->
                           <textarea class="form-control" type="text" placeholder="Description" name="description"></textarea><br>
-                          <input class="form-control" type="text" placeholder="Enter price" name="proprice">
+                          <input class="form-control" type="hidden" placeholder="Enter price" name="proprice" value="1">
                           
 	        </div>
 	        <div class="modal-footer">

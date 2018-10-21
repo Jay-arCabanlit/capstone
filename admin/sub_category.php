@@ -1,5 +1,8 @@
 <?php 
 session_start();
+// if (!isset($_SESSION['login'])) {
+//   header('location:../404.php');
+// }
 include "../connect/connection.php";
 include "../function/class_product.php";
 $user = new products;
@@ -40,8 +43,8 @@ global $connect;
             <li class="active"><a href="sub_category.php">Subcategory</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, Brad</a></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a href="#">Admin</a></li>
+            <li><a href="../function/logout.ph">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -80,7 +83,6 @@ global $connect;
               <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>product list<span class="badge"></span></a>
               <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge"></span></a>
               <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge"></span></a>
-              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge"></span></a>
             </div>
           </div>
           <div class="col-md-9">
@@ -93,7 +95,7 @@ global $connect;
                 <div class="row">
                       <div class="col-md-12">
                         <form  action="add_category.php" method="post" class="form-inline">
-                          <select class="" name="catname">
+                          <select class="form-control" name="catname">
                               <option selected>Select Category</option>
                             <?php foreach ($result as $d): ?>
                           <option value="<?php echo $d->cat_id; ?>"><?php echo $d->cat_name; ?></option>

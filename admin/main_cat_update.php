@@ -1,5 +1,9 @@
 <?php 
 session_start();
+// if (!isset($_SESSION['login'])) {
+//   header('location:../404.php');
+// }
+
 include "../connect/connection.php";
 include "../function/class_product.php";
 $products = new products;
@@ -15,7 +19,7 @@ global $connect;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Area | Pages</title>
+    <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -36,14 +40,10 @@ global $connect;
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Dashboard</a></li>
-            <li class="active"><a href="pages.html">Pages</a></li>
-            <li><a href="posts.html">Posts</a></li>
-            <li><a href="users.html">Users</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, Brad</a></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a href="#">ADMIN</a></li>
+            <li><a href="../function/logout.php">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -53,7 +53,7 @@ global $connect;
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Pages<small>Manage Site Pages</small></h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Update</h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
@@ -93,14 +93,14 @@ global $connect;
               <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>product list<span class="badge"></span></a>
               <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge"></span></a>
               <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge"></span></a>
-              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge"></span></a>
+             
             </div>
           </div>
           <div class="col-md-9">
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Pages</h3 >
+                <h3 class="panel-title"></h3 >
               </div>
               <div class="panel-body">
                 <div class="row">

@@ -1,5 +1,8 @@
 <?php 
 session_start();
+// if (!isset($_SESSION['login'])) {
+//   header('location:../404.php');
+// }
 include "../connect/connection.php";
 include "../function/class_product.php";
 $product =  new products;
@@ -39,8 +42,8 @@ $result = $product->viewallproduct();
             <li><a href="sub_category.php">Subcategory</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, Brad</a></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a href="#">Admin</a></li>
+            <li><a href="../function/logout.php">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -51,20 +54,7 @@ $result = $product->viewallproduct();
         <div class="row">
           <div class="col-md-10">
             <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard</h1>
-          </div>
-          <div class="col-md-2">
-            <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Create Content
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Add Page</a></li>
-                <li><a href="#">Add Post</a></li>
-                <li><a href="#">Add User</a></li>
-              </ul>
-            </div>
-          </div>
+
         </div>
       </div>
     </header>
@@ -89,7 +79,6 @@ $result = $product->viewallproduct();
               <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>product list<span class="badge"></span></a>
               <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge"></span></a>
               <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge"></span></a>
-              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge"></span></a>
             </div>
           </div>
           <div class="col-md-9">
@@ -111,7 +100,6 @@ $result = $product->viewallproduct();
                         <th>Price</th>
                         <th>Added date</th>
                         <th>DELETE</th>
-                        <th>EDIT</th>
                       </tr>
                       <tr>
                         <?php foreach ($result as $d):?>
@@ -127,7 +115,6 @@ $result = $product->viewallproduct();
                         <td><?php echo $d->pro_price; ?></td>
                         <td><?php echo $d->pro_added_date; ?></td>
                         <td><a href="delete.php?productid=<?php echo $d->pro_id; ?>">Delete</a></td>
-                        <td><a href="update_product.php?proid=<?php echo $d->pro_id; ?>">Edit</a></td>
                       </tr>
                       <?php endforeach; ?>
                     </table>

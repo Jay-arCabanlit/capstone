@@ -31,13 +31,13 @@ if (isset($_POST['login'])) {
 						header("Location:user_profile.php");
 						
 					}else{
-						echo "wrong details";
+						echo "<script>window.open('index.php','_self');alert('Wrong Details');</script>";
 					}
 			// $username = $_SESSION['login'];
 
 			// $_SESSION['login'] = $account2->users_id;
 			// $_SESSION['user_logged_in'] = $account2->username;
-						echo "<script>window.open('index.php','_self');alert('succesfuly login');</script>";
+						// echo "<script>window.open('index.php','_self');alert('succesfuly login');</script>";
 
 		}
 		# code...

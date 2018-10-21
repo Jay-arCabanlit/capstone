@@ -1,9 +1,9 @@
 <?php
 session_start();
 include "connect/connection.php";
-include "function/search-input.php";
-$details = new search;
-$AllProducts = $details->SearchProducts($_GET['search']);
+
+global $connect;
+
 ?>
 
 <!DOCTYPE html>	
@@ -37,6 +37,7 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 
 	<link rel="stylesheet" type="text/css" href="../assets/css/moded.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login_css.css">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,22 +62,17 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 				<div class="pull-left">
 					<!-- Logo -->
 					<div class="header-logo">
-						<a class="logo" href="#">
-							<img src="../img/logo1.png" alt="">
+						<a class="logo" href="index.php">
+							<img src="../img/logo1.png" style="width:200px;height:120px;">
 						</a>
 					</div>
 					<!-- /Logo -->
 
 					<!-- Search -->
 					<div class="header-search">
-						<form>
-							<input class="input search-input" type="text" placeholder="Enter your keyword">
-							<select class="input search-categories">
-								<option value="0">All Categories</option>
-								<option value="1">Category 01</option>
-								<option value="1">Category 02</option>
-							</select>
-							<button class="search-btn"><i class="fa fa-search"></i></button>
+						<form method="GET" action="search_result.php">
+							<input class="input search-input" name="searchall" type="text" placeholder="Enter your keyword">
+							<button type="submit" class="search-btn" name="search"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
 					<!-- /Search -->
@@ -91,60 +87,22 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 								</div>
 								<strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
 							</div>
-							<a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
-							<ul class="custom-menu">
-								<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-								<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-								<li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
-								<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-								<li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-								<li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
-							</ul>
+							<a href="#" class="text-uppercase" data-toggle="modal" data-target="#login-modal">Login</a> 
+							/ <a href="regestration_form.php" class="text-uppercase">Join</a>
+							<form method="post" action="login.php">
+							<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form>
+					<input type="text" name="username" placeholder="Username">
+					<input type="password" name="password" placeholder="Password">
+					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+				  </form>
 						</li>
 						<!-- /Account -->
 
 						<!-- Cart -->
-						<li class="header-cart dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-								<div class="header-btns-icon">
-									<i class="fa fa-shopping-cart"></i>
-									<span class="qty">3</span>
-								</div>
-								<strong class="text-uppercase">My Cart:</strong>
-								<br>
-								<span>35.20$</span>
-							</a>
-							<div class="custom-menu">
-								<div id="shopping-cart">
-									<div class="shopping-cart-list">
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="./img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="./img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-									</div>
-									<div class="shopping-cart-btns">
-										<button class="main-btn">View Cart</button>
-										<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
-									</div>
-								</div>
-							</div>
-						</li>
 						<!-- /Cart -->
 
 						<!-- Mobile nav toggle-->
@@ -171,33 +129,15 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 					<span class="category-header">Categories <i class="fa fa-list"></i></span>
 					<ul class="category-list">
 						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Organic</a>
-							<div class="custom-menu">
-								<div class="row hidden-sm hidden-xs">
-									<div class="col-md-12">
-										<hr>
-										<a class="banner banner-1" href="#">
-											<img src="./img/banner05.jpg" alt="">
-											<div class="banner-caption text-center">
-												<h2 class="white-color">NEW COLLECTION</h2>
-												<h3 class="white-color font-weak">HOT DEAL</h3>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
+						<a href="product-page/products.php?cat_id=24" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Fertilizer</a>
 						</li>
-						<li><a href="#">Vegetable</a></li>
-						<li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Fruits</a>
-							<div class="custom-menu">
-							</div>
+						<li><a href="product-page/products.php?cat_id=19">Vegetables</a></li>
+						<li><a href="product-page/products.php?cat_id=20">Fruits</a></li>
+						<li><a href="product-page/products.php?cat_id=18">Livestocks</a></li>
+						<li><a href="product-page/products.php?cat_id=17">Poultry </a>
 						</li>
-						<li><a href="#">Livestock</a></li>
-						<li><a href="#">Poultry</a></li>
-						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Rice</a>
-						</li>
-						<li><a href="#">View All</a></li>
+						<li><a href="product-page/products.php?cat_id=29">Rice</a></li>
+						<li><a href="product-page/products.php?cat_id=23">Beans</a></li>
 					</ul>
 				</div>
 				<!-- /category nav -->
@@ -207,15 +147,6 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 					<ul class="menu-list">
 						<li><a href="#">Home</a></li>
-						<li><a href="#">Shop</a></li>
-						<li><a href="#">Sales</a></li>
-						<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
-							<ul class="custom-menu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="products.html">Products</a></li>
-								<li><a href="product-page.html">Product Details</a></li>
-								<li><a href="checkout.html">Checkout</a></li>
-							</ul>
 						</li>
 					</ul>
 				</div>
@@ -251,12 +182,8 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 
 					<!-- aside widget -->
 					<div class="aside">
-						<h3 class="aside-title">Top Rated Product</h3>
+						<h3 class="aside-title">Products</h3>
 						<!-- widget product -->
-						<div class="product product-widget">
-							<div class="product-thumb">
-								<img src="./img/thumb-product01.jpg" alt="">
-							</div>
 						</div>
 						<!-- /widget product -->
 					<!-- /aside widget -->
@@ -266,39 +193,7 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 				<!-- MAIN -->
 				<div id="main" class="col-md-9">
 					<!-- store top filter -->
-					<div class="store-filter clearfix">
-						<div class="pull-left">
-							<div class="row-filter">
-								<a href="#"><i class="fa fa-th-large"></i></a>
-								<a href="#" class="active"><i class="fa fa-bars"></i></a>
-							</div>
-							<div class="sort-filter">
-								<span class="text-uppercase">Sort By:</span>
-								<select class="input">
-										<option value="0">Position</option>
-										<option value="0">Price</option>
-										<option value="0">Rating</option>
-									</select>
-								<a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
-							</div>
-						</div>
-						<div class="pull-right">
-							<div class="page-filter">
-								<span class="text-uppercase">Show:</span>
-								<select class="input">
-										<option value="0">10</option>
-										<option value="1">20</option>
-										<option value="2">30</option>
-									</select>
-							</div>
-							<ul class="store-pages">
-								<li><span class="text-uppercase">Page:</span></li>
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-							</ul>
-						</div>
+
 					</div>
 					<!-- /store top filter -->
 
@@ -308,35 +203,39 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 						<div class="row">
 							<!-- Product Single -->
 							<?php 
+							if (isset($_GET['search'])) {
+
+								$searchall = $_GET['searchall'];
+
+								$query = $connect->prepare("SELECT * FROM products WHERE pro_name like '%$searchall%'");
+								$query->execute();
+								$AllProducts = $query->fetchAll(PDO::FETCH_ASSOC);
+
+								# code...
+							
 								foreach ($AllProducts as $result ) { $allProduct = "
 								<div class='product product-single img-space'>
 									<div class='product-thumb'>
 										<div class='product-label'>
 										</div>
-										<a href='product-page.php?prodetails=".$result['pro_id']."'>
+										<a href='product-page/product-page.php?prodetails=".$result['pro_id']."'>
 										<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
 										<img src='../img/".$result['pro_img1']."' alt='' class='img-size'>
 									</div>
 									<div class='product-body'>
-										<h3 class='product-price'>".$result['pro_price']."<del class='product-old-price'>$45.00</del></h3>
+										<h3 class='product-price'>".$result['pro_price']."</h3>
 										<div class='product-rating'>
-											<i class='fa fa-star'></i>
-											<i class='fa fa-star'></i>
-											<i class='fa fa-star'></i>
-											<i class='fa fa-star'></i>
-											<i class='fa fa-star-o empty'></i>
+
 										</div>
 										<h2 class='product-name'><a href='#'>".$result['pro_name']."</a></h2>
 										<div class='product-btns'>
-											<form method='post' action='../cart.php' class='form_align'>
-										<input type='hidden' name='proid' value='".$result['pro_id']."'></>
-										<button class='primary-btn add-to-cart' name='cart'><i class='fa fa-shopping-cart'></i> Add to Cart</button></form>
 										</div>
 									</div>
 								</div>
 							";
 							echo $allProduct;
 									# code...
+								}
 								}
 							 ?>
 							<!-- /Product Single -->
@@ -348,40 +247,7 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 					<!-- /STORE -->
 
 					<!-- store bottom filter -->
-					<div class="store-filter clearfix">
-						<div class="pull-left">
-							<div class="row-filter">
-								<a href="#"><i class="fa fa-th-large"></i></a>
-								<a href="#" class="active"><i class="fa fa-bars"></i></a>
-							</div>
-							<div class="sort-filter">
-								<span class="text-uppercase">Sort By:</span>
-								<select class="input">
-										<option value="0">Position</option>
-										<option value="0">Price</option>
-										<option value="0">Rating</option>
-									</select>
-								<a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
-							</div>
-						</div>
-						<div class="pull-right">
-							<div class="page-filter">
-								<span class="text-uppercase">Show:</span>
-								<select class="input">
-										<option value="0">10</option>
-										<option value="1">20</option>
-										<option value="2">30</option>
-									</select>
-							</div>
-							<ul class="store-pages">
-								<li><span class="text-uppercase">Page:</span></li>
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-							</ul>
-						</div>
-					</div>
+
 					<!-- /store bottom filter -->
 				</div>
 				<!-- /MAIN -->
@@ -404,12 +270,12 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 						<!-- footer logo -->
 						<div class="footer-logo">
 							<a class="logo" href="#">
-		            <img src="./img/logo.png" alt="">
+		            <img src="./img/logo2.png" alt="">
 		          </a>
 						</div>
 						<!-- /footer logo -->
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+						<p>PROMOTE THE DIFFERENT AGRICULTURAL FARMS THROUGH ONLINE AND TO SHOWCASE ALL FARMS IN MINDANAO</p>
 
 						<!-- footer social -->
 						<ul class="footer-social">
@@ -427,14 +293,14 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">My Account</h3>
+<!-- 						<h3 class="footer-header">My Account</h3>
 						<ul class="list-links">
 							<li><a href="#">My Account</a></li>
 							<li><a href="#">My Wishlist</a></li>
 							<li><a href="#">Compare</a></li>
-							<li><a href="checkout.php">Checkout</a></li>
+							<li><a href="#">Checkout</a></li>
 							<li><a href="#">Login</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<!-- /footer widget -->
@@ -444,13 +310,13 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Customer Service</h3>
+<!-- 						<h3 class="footer-header">Customer Service</h3>
 						<ul class="list-links">
 							<li><a href="#">About Us</a></li>
 							<li><a href="#">Shiping & Return</a></li>
 							<li><a href="#">Shiping Guide</a></li>
 							<li><a href="#">FAQ</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<!-- /footer widget -->
@@ -458,14 +324,19 @@ $AllProducts = $details->SearchProducts($_GET['search']);
 				<!-- footer subscribe -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Stay Connected</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-						<form>
+						<h3 class="footer-header">Contact</h3>
+												<ul class="list-links">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">cabanlit7@gmail.com</a></li>
+							<li><a href="#">agritour</a></li>
+							<!-- <li><a href="#">FAQ</a></li> -->
+						</ul> 
+<!-- 						<form>
 							<div class="form-group">
 								<input class="input" placeholder="Enter Email Address">
 							</div>
 							<button class="primary-btn">Join Newslatter</button>
-						</form>
+						</form> -->
 					</div>
 				</div>
 				<!-- /footer subscribe -->

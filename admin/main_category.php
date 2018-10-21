@@ -1,5 +1,8 @@
 <?php 
 session_start();
+// if (!isset($_SESSION['login'])) {
+//   header('location:../404.php');
+// }
 include "../connect/connection.php";
 include "../function/class_product.php";
 $maincat = new products;
@@ -12,7 +15,7 @@ global $connect;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Area | Pages</title>
+    <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -39,8 +42,8 @@ global $connect;
             <li><a href="sub_category.php">Subcategory</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, Brad</a></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a href="#">Admin</a></li>
+            <li><a href="../function/logout.php">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -51,19 +54,6 @@ global $connect;
         <div class="row">
           <div class="col-md-10">
             <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Category</h1>
-          </div>
-          <div class="col-md-2">
-            <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Create Content
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Add Page</a></li>
-                <li><a href="#">Add Post</a></li>
-                <li><a href="#">Add User</a></li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
@@ -90,7 +80,6 @@ global $connect;
               <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>product list<span class="badge"></span></a>
               <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge"></span></a>
               <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge"></span></a>
-              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge"></span></a>
             </div>
 
           </div>

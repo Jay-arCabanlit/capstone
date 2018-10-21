@@ -4,13 +4,16 @@ include "function/function.php";
 include "connect/connection.php";
 include "function/class_view.php";
 include "class_ip.php";
+include "function/class_product.php";
 $product =  new viewallproducts;
+$all_cat = new products;
 $result = $product->poultry();
 $resultlive = $product->livestock();
 $resultvege = $product->vegetable();
 $resultfruits = $product->fruits();
 $Cart = new GetIp;
 $count = $Cart->cartcount();
+$maincat = $all_cat->viewcat();
 global $connect;
  ?>
 
@@ -23,7 +26,8 @@ global $connect;
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>Online Agriculture Market Place</title>
+	<title>Online Mindanao Agricultural Tourism Destination</title>
+	<!-- <title>Online Agriculture Market Place</title> -->
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
@@ -46,6 +50,9 @@ global $connect;
 
 	<link rel="stylesheet" type="text/css" href="assets/css/login_css.css">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
 
 <!-- 	<link rel="stylesheet" type="text/css" href="admin/css/moded.css"> -->
 
@@ -69,20 +76,15 @@ global $connect;
 					<!-- Logo -->
 					<div class="header-logo">
 						<a class="logo" href="index.php">
-							<img src="./img/logo1.png" alt="" style="width:200px;height:120px;">
+							<img src="./img/logo2.png" alt="" style="width:200px;height:120px;">
 						</a>
 					</div>
 					<!-- /Logo -->
 
 					<!-- Search -->
 					<div class="header-search">
-						<form action="function/search.php" method="get">
+						<form action="search_result.php" method="get">
 							<input class="input search-input" name="searchall" type="text" placeholder="Enter your keyword">
-							<select class="input search-categories">
-								<option value="0">All Categories</option>
-								<option value="1">Category 01</option>
-								<option value="1">Category 02</option>
-							</select>
 							<button class="search-btn" name="search"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
@@ -119,10 +121,6 @@ global $connect;
 		  </div>
 		  </form>
 							<ul class="custom-menu">
-								<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-								<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-								<li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
-								<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
 								<li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
 								<li><a href="regestration_form.php"><i class="fa fa-user-plus"></i> Create An Account</a></li>
 							</ul>
@@ -154,17 +152,11 @@ global $connect;
 				<!-- category nav -->
 				<div class="category-nav">
 					<span class="category-header">Categories <i class="fa fa-list"></i></span>
-					<ul class="category-list">
+					<ul class="category-list" style="overflow-y:scroll; height: 570px; ">
 						<li class="dropdown side-dropdown">
-							<a href="product-page/products.php?cat_id=24" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Fertilizer</a>
-						</li>
-						<li><a href="product-page/products.php?cat_id=19">Vegetables</a></li>
-						<li><a href="product-page/products.php?cat_id=20">Fruits</a></li>
-						<li><a href="product-page/products.php?cat_id=18">Livestocks</a></li>
-						<li><a href="product-page/products.php?cat_id=17">Poultry </a>
-						</li>
-						<li><a href="product-page/products.php?cat_id=29">Rice</a></li>
-						<li><a href="product-page/products.php?cat_id=23">Beans</a></li>
+							<?php foreach ($maincat as $d): ?>
+								<li><a href="product-page/products.php?cat_id=<?php echo $d->cat_id; ?>"><?php echo $d->cat_name;  ?></a></li>
+							<?php endforeach ?>
 					</ul>
 				</div>
 				<!-- /category nav -->
@@ -202,31 +194,32 @@ global $connect;
 				<div id="home-slick">
 					<!-- banner -->
 					<div class="banner banner-1">
-						<img src="./img/cover2.jpg" alt="">
+						<img src="./img/dizon.jpg" alt="">
 						<div class="banner-caption text-center">
-							<h1>Big sale</h1>
-							<h3 class="white-color font-weak">Up to 5% Discount</h3>
-							<button class="primary-btn">Buy now</button>
+							<h1 class="primary-color"><br><span class="white-color font-weak">
+								Dizon Farm
+							</span></h1>
 						</div>
 					</div>
 					<!-- /banner -->
 
 					<!-- banner -->
 					<div class="banner banner-1">
-						<img src="./img/cover.jpg" alt="">
+						<img src="./img/Bukidnon1.jpg" alt="">
 						<div class="banner-caption">
-							<h1 class="primary-color">Fresh Vege<br><span class="white-color font-weak">Up to 5% OFF</span></h1>
-							<button class="primary-btn">bBuy now</button>
+							<h1 class="primary-color"><br><span class="white-color font-weak">
+								Bukidnon Pineapple Plantation
+							</span></h1>
+
 						</div>
 					</div>
 					<!-- /banner -->
 
 					<!-- banner -->
 					<div class="banner banner-1">
-						<img src="./img/cover3.jpg" alt="">
+						<img src="./img/bemwa.jpg" alt="">
 						<div class="banner-caption">
-							<h1 class="white-color">Fresh <span>Fruits</span></h1>
-							<button class="primary-btn">Buy now</button>
+							<h1 class="white-color">Bemwa<span><br>Farm</span><br>davao</h1>
 						</div>
 					</div>
 					<!-- /banner -->
@@ -244,38 +237,18 @@ global $connect;
 		<!-- container -->
 		<div class="container">
 			<!-- row -->
-			<div class="row">
+			<div class="row content">
+					<h2 style="color: white; font-size:60px; font-family: 'Krub', sans-serif;">Tour the World of <br> Agriculture with us!</h2>
 				<!-- banner -->
-				<div class="col-md-4 col-sm-6">
-					<a class="banner banner-1" href="#">
-						<img src="./img/chicken.jpg" alt="">
-						<div class="banner-caption text-center">
-							<h2 class="white-color">Poultry</h2>
-						</div>
-					</a>
-				</div>
+
 				<!-- /banner -->
 
 				<!-- banner -->
-				<div class="col-md-4 col-sm-6">
-					<a class="banner banner-1" href="#">
-						<img src="./img/vegetable.jpg" alt="">
-						<div class="banner-caption text-center">
-							<h2 class="white-color">Vegetable</h2>
-						</div>
-					</a>
-				</div>
+
 				<!-- /banner -->
 
 				<!-- banner -->
-				<div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
-					<a class="banner banner-1" href="#">
-						<img src="./img/Fruits.jpg" alt="">
-						<div class="banner-caption text-center">
-							<h2 class="white-color">NEW COLLECTION</h2>
-						</div>
-					</a>
-				</div>
+
 				<!-- /banner -->
 
 			</div>
@@ -294,7 +267,7 @@ global $connect;
 				<!-- section-title -->
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2 class="title">Poultry</h2>
+						<h2 class="title">Davao del Sur</h2>
 						<div class="pull-right">
 							<div class="product-slick-dots-1 custom-dots"></div>
 						</div>
@@ -303,15 +276,13 @@ global $connect;
 				<!-- /section-title -->
 
 				<!-- banner -->
-				<div class="col-md-3 col-sm-6 col-xs-6">
+<!-- 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="banner banner-2">
-						<img src="./img/image2.jpg" alt="">
+						<img src="./img/imag2.jpg" alt="">
 						<div class="banner-caption">
-							<h2 class="white-color">NEW<br>COLLECTION</h2>
-							<button class="primary-btn">Buy Now</button>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- /banner -->
 
 				<!-- Product Slick -->
@@ -332,8 +303,7 @@ global $connect;
 									<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>
 									<img src='img/".$poultry->pro_img1."' alt=''>
 								</div>
-								<div class='product-body'>
-									<h3 class='product-price'>P".$poultry->pro_price." 
+								<div class='product-body'> 
 									<div class='product-rating'>
 									
 									</div>
@@ -358,7 +328,7 @@ global $connect;
 				<!-- section title -->
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2 class="title">Livestock</h2>
+						<h2 class="title">Bukidnon</h2>
 						<div class="pull-right">
 							<div class="product-slick-dots-2 custom-dots">
 							</div>
@@ -377,8 +347,7 @@ global $connect;
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="product product-single product-hot">
 						<div class="product-thumb">
-							<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-							<img src="./img/product01.jpg" alt="">
+							<img src="./design/gamay1.jpg" alt="">
 						</div>
 					</div>
 				</div>
@@ -431,42 +400,25 @@ global $connect;
 	<!-- /section -->
 
 	<!-- section -->
-	<div class="section section-grey">
+	<div class="section">
 		<!-- container -->
 		<div class="container">
 			<!-- row -->
 			<div class="row">
 				<!-- banner -->
-				<div class="col-md-8">
+				<div class="container-fluid">
 					<div class="banner banner-1">
-						<img src="./img/dako.png" alt="">
+						<img src="./img/banner13.jpg" alt="" style="width:1190px;">
 						<div class="banner-caption text-center">
-							<h1 class="primary-color"><br><span class="white-color font-weak"></span></h1>
+							<h1 class="primary-color">Online Mindanao Agricultural<br>Tourism Destination <br> <span class="white-color font-weak" style="font-size: 30px;">Promote the different agricultural farms through online and to showcase all farms in Mindanao</span></h1>
 						</div>
 					</div>
 				</div>
 				<!-- /banner -->
 
-				<!-- banner -->
-				<div class="col-md-4 col-sm-6">
-					<a class="banner banner-1" href="#">
-						<img src="./img/vegetable.jpg" alt="">
-						<div class="banner-caption text-center">
-							<h2 class="white-color">NEW COLLECTION</h2>
-						</div>
-					</a>
-				</div>
 				<!-- /banner -->
 
 				<!-- banner -->
-				<div class="col-md-4 col-sm-6">
-					<a class="banner banner-1" href="#">
-						<img src="./img/fruits.jpg" alt="">
-						<div class="banner-caption text-center">
-							<h2 class="white-color">NEW COLLECTION</h2>
-						</div>
-					</a>
-				</div>
 				<!-- /banner -->
 			</div>
 			<!-- /row -->
@@ -484,7 +436,7 @@ global $connect;
 				<!-- section title -->
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2 class="title">Vegetables</h2>
+						<h2 class="title">Compostela Valley</h2>
 					</div>
 				</div>
 				<!-- section title -->
@@ -506,7 +458,6 @@ global $connect;
 									<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> Quick view</button></a>							<img src='img/".$veges->pro_img1."' alt=''>
 						</div>
 						<div class='product-body'>
-							<h3 class='product-price'>P".$veges->pro_price."</h3>
 							<div class='product-rating'>
 							</div>
 							<h2 class='product-name'><a href='#'>".$veges->pro_name."</a></h2>
@@ -532,7 +483,7 @@ global $connect;
 				<!-- section title -->
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2 class="title">Fruits</h2>
+						<h2 class="title">Sarangani</h2>
 					</div>
 				</div>
 				<!-- section title -->
@@ -548,10 +499,10 @@ global $connect;
 							<img src='img/".$fruits->pro_img1."' alt=''>
 						</div>
 						<div class='product-body'>
-							<h3 class='product-price'><b>P</b>".$fruits->pro_price."</h3>
+							
 							<div class='product-rating'>
 							</div>
-							<h2 class='product-name'><a href='#'>".$fruits->pro_name."</a></h2>
+							
 							<div class='product-btns'>
 							</div>
 						</div>
@@ -569,7 +520,6 @@ global $connect;
 		<!-- /container -->
 	</div>
 	<!-- /section -->
-
 	<!-- FOOTER -->
 	<footer id="footer" class="section section-grey">
 		<!-- container -->
@@ -581,13 +531,13 @@ global $connect;
 					<div class="footer">
 						<!-- footer logo -->
 						<div class="footer-logo">
-							<a class="logo" href="index.php">
-		            <img src="./img/logo1.png" alt="" class="logosize">
+							<a class="logo" href="#">
+		            <img src="./img/logo2.png" alt="">
 		          </a>
 						</div>
 						<!-- /footer logo -->
 
-						<p>The purpose of Online Agricultural Market Place is to be able to sell and purchase agricultural products through online market, and also to be able to recognized by other businesses and will be known locally.</p>
+						<p>PROMOTE THE DIFFERENT AGRICULTURAL FARMS THROUGH ONLINE AND TO SHOWCASE ALL FARMS IN MINDANAO</p>
 
 						<!-- footer social -->
 						<ul class="footer-social">
@@ -605,14 +555,14 @@ global $connect;
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">My Account</h3>
+<!-- 						<h3 class="footer-header">My Account</h3>
 						<ul class="list-links">
 							<li><a href="#">My Account</a></li>
 							<li><a href="#">My Wishlist</a></li>
 							<li><a href="#">Compare</a></li>
-							<li><a href="Checkout.php">Checkout</a></li>
+							<li><a href="#">Checkout</a></li>
 							<li><a href="#">Login</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<!-- /footer widget -->
@@ -622,13 +572,13 @@ global $connect;
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Customer Service</h3>
+<!-- 						<h3 class="footer-header">Customer Service</h3>
 						<ul class="list-links">
 							<li><a href="#">About Us</a></li>
 							<li><a href="#">Shiping & Return</a></li>
 							<li><a href="#">Shiping Guide</a></li>
 							<li><a href="#">FAQ</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<!-- /footer widget -->
@@ -636,14 +586,19 @@ global $connect;
 				<!-- footer subscribe -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Stay Connected</h3>
-						<p>If you have any problem on this website just leve your gmail or email us.</p>
-						<form>
+						<h3 class="footer-header">Contact</h3>
+												<ul class="list-links">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">cabanlit7@gmail.com</a></li>
+							<li><a href="#">agritour</a></li>
+							<!-- <li><a href="#">FAQ</a></li> -->
+						</ul> 
+<!-- 						<form>
 							<div class="form-group">
 								<input class="input" placeholder="Enter Email Address">
 							</div>
 							<button class="primary-btn">Join Newslatter</button>
-						</form>
+						</form> -->
 					</div>
 				</div>
 				<!-- /footer subscribe -->
@@ -656,7 +611,7 @@ global $connect;
 					<!-- footer copyright -->
 					<div class="footer-copyright">
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is developed <i class="fa fa-heart-o" aria-hidden="true"></i> for <a href="https://colorlib.com" target="_blank">Capstone purposes</a>
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</div>
 					<!-- /footer copyright -->

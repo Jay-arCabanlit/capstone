@@ -4,7 +4,7 @@ class products {
 	function viewcat(){
 	global $connect;
 	// $db = connect();
-	$query = $connect->prepare("SELECT * FROM  main_cat");
+	$query = $connect->prepare("SELECT * FROM  main_cat ORDER BY cat_name ASC");
 	$query->execute();
 	$result = $query->fetchAll(PDO::FETCH_OBJ);
 	return $result;

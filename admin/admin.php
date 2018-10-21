@@ -1,8 +1,10 @@
 <?php
 session_start();
+// if (!isset($_SESSION['login'])) {
+//   header('location:../404.php');
+// }
 include "../connect/connection.php";
 include "../function/class_users.php";
-
 $usersdetails = new users_info;
 $usersInfo = $usersdetails->AllUsers();
  ?>
@@ -40,8 +42,8 @@ $usersInfo = $usersdetails->AllUsers();
             <li><a href="posts.html">Subcategory</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, Brad</a></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a href="#">admin</a></li>
+            <li><a href="../function/logout.php">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -79,7 +81,6 @@ $usersInfo = $usersdetails->AllUsers();
               <a href="product_list.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>product list<span class="badge"></span></a>
               <a href="main_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Category <span class="badge"></span></a>
               <a href="sub_category.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Subcategory<span class="badge"></span></a>
-              <a href="create_product" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Add Product<span class="badge"></span></a>
             </div>
           </div>
 

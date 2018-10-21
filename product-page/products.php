@@ -2,8 +2,11 @@
 session_start();
 include "../connect/connection.php";
 include "../function/class_productdetails.php";
+include "../function/class_product.php";
 $details = new ViewProductDetails;
+$all_cat = new products;
 $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
+$maincat = $all_cat->viewcat();
 ?>
 
 <!DOCTYPE html>	
@@ -15,7 +18,7 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>Online Agriculture Market Place</title>
+	<title>Online Mindanao Agricultural Tourism Destination</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
@@ -61,8 +64,8 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 				<div class="pull-left">
 					<!-- Logo -->
 					<div class="header-logo">
-						<a class="logo" href="#">
-							<img src="../img/logo1.png" alt="">
+						<a class="logo" href="../index.php">
+							<img src="../img/logo2.png" alt="" style="width:200px;height:120px;">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -129,17 +132,12 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 				<!-- category nav -->
 				<div class="category-nav show-on-click">
 					<span class="category-header">Categories <i class="fa fa-list"></i></span>
-					<ul class="category-list">
+					<ul class="category-list" style="overflow-y:scroll; height: 570px; ">
 						<li class="dropdown side-dropdown">
-						<li><a href="products.php?cat_id=24">Fertilizer</a></li>
-						<li><a href="products.php?cat_id=19">Vegetables</a></li>
-						<li><a href="products.php?cat_id=20">Fruits</a></li>
-						<li><a href="products.php?cat_id=18">Livestocks</a></li>
-						<li><a href="products.php?cat_id=17">Poultry </a>
-						</li>
-						<li><a href="products.php?cat_id=29">Rice</a></li>
-						<li><a href="products.php?cat_id=23">Beans</a></li>
-						</ul>
+							<?php foreach ($maincat as $d): ?>
+								<li><a href="products.php?cat_id=<?php echo $d->cat_id; ?>"><?php echo $d->cat_name;  ?></a></li>
+							<?php endforeach ?>
+					</ul>
 					</ul>
 				</div>
 				<!-- /category nav -->
@@ -185,7 +183,7 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 
 					<!-- aside widget -->
 					<div class="aside">
-						<h3 class="aside-title">Top Rated Product</h3>
+						<h3 class="aside-title">RESULT</h3>
 						<!-- widget product -->
 						<div class="product product-widget">
 							<div class="product-thumb">
@@ -216,7 +214,6 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 										<img src='../img/".$result['pro_img1']."' alt='' class='img-size'>
 									</div>
 									<div class='product-body'>
-										<h3 class='product-price'>".$result['pro_price']."</h3>
 										<div class='product-rating'>
 										</div>
 										<h2 class='product-name'><a href='#'>".$result['pro_name']."</a></h2>
@@ -248,21 +245,6 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 							</div>
 						</div>
 						<div class="pull-right">
-							<div class="page-filter">
-								<span class="text-uppercase">Show:</span>
-								<select class="input">
-										<option value="0">10</option>
-										<option value="1">20</option>
-										<option value="2">30</option>
-									</select>
-							</div>
-							<ul class="store-pages">
-								<li><span class="text-uppercase">Page:</span></li>
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-							</ul>
 						</div>
 					</div>
 					<!-- /store bottom filter -->
@@ -287,12 +269,12 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 						<!-- footer logo -->
 						<div class="footer-logo">
 							<a class="logo" href="#">
-		            <img src="./img/logo.png" alt="">
+		            <img src="../img/logo2.png" alt="">
 		          </a>
 						</div>
 						<!-- /footer logo -->
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+						<p>PROMOTE THE DIFFERENT AGRICULTURAL FARMS THROUGH ONLINE AND TO SHOWCASE ALL FARMS IN MINDANAO</p>
 
 						<!-- footer social -->
 						<ul class="footer-social">
@@ -310,14 +292,14 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">My Account</h3>
+<!-- 						<h3 class="footer-header">My Account</h3>
 						<ul class="list-links">
 							<li><a href="#">My Account</a></li>
 							<li><a href="#">My Wishlist</a></li>
 							<li><a href="#">Compare</a></li>
-							<li><a href="checkout.php">Checkout</a></li>
+							<li><a href="#">Checkout</a></li>
 							<li><a href="#">Login</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<!-- /footer widget -->
@@ -327,13 +309,13 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Customer Service</h3>
+<!-- 						<h3 class="footer-header">Customer Service</h3>
 						<ul class="list-links">
 							<li><a href="#">About Us</a></li>
 							<li><a href="#">Shiping & Return</a></li>
 							<li><a href="#">Shiping Guide</a></li>
 							<li><a href="#">FAQ</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<!-- /footer widget -->
@@ -341,14 +323,19 @@ $AllProducts = $details->DisplayAllProducts($_GET['cat_id']);
 				<!-- footer subscribe -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Stay Connected</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-						<form>
+						<h3 class="footer-header">Contact</h3>
+												<ul class="list-links">
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">cabanlit7@gmail.com</a></li>
+							<li><a href="#">agritour</a></li>
+							<!-- <li><a href="#">FAQ</a></li> -->
+						</ul> 
+<!-- 						<form>
 							<div class="form-group">
 								<input class="input" placeholder="Enter Email Address">
 							</div>
 							<button class="primary-btn">Join Newslatter</button>
-						</form>
+						</form> -->
 					</div>
 				</div>
 				<!-- /footer subscribe -->
